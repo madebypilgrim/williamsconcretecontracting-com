@@ -1,0 +1,52 @@
+{##
+ # Main layout
+ # @block {string} content
+ #}
+
+{# Params #}
+{% set content %}
+  {% block content %}{% endblock %}
+{% endset %}
+
+{# Markup #}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    {% include '_meta/data' %}
+    {#
+    {% include '_meta/favicons' %}
+    #}
+
+    {# Main stylesheet #}
+    <link rel="stylesheet" type="text/css" href="/styles/index.css?build=1536262109825" />
+  </head>
+
+  <body data-no-js="true">
+    {# Set global components and state #}
+    <script type="text/javascript">
+      document.body.setAttribute('data-no-js', false);
+      window[{{ constant('SITE_HANDLE')|json_encode|raw }}] = { components: [], state: {} };
+    </script>
+
+    <header>
+      {% include '_components/header' %}
+    </header>
+
+    <main>
+      {% include '_components/main' with {
+        content: content,
+      } %}
+    </main>
+
+    <footer>
+      {% include '_components/footer' %}
+    </footer>
+
+    {% include '_components/modal' %}
+
+    {% include '_components/loader' %}
+
+    {# Main scripts #}
+    <script type="text/javascript" src="/scripts/index.js?build=1536262109825"></script>
+  </body>
+</html>

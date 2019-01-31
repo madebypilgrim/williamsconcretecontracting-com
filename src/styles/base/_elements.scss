@@ -1,0 +1,103 @@
+html {
+  font-size: 62.5%; // Sets up the Base 10 stuff
+}
+
+body {
+  @include font("body-md");
+  position: relative;
+  overflow-x: hidden;
+  min-width: $min-page-width;
+  margin: 0 auto;
+  color: $color-fg-gray-dk;
+  -webkit-font-smoothing: antialiased;
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+p {
+  color: #5E5656; // Per Josh
+}
+
+a {
+  display: inline-block;
+  cursor: pointer;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 0.5em;
+}
+
+hr {
+  height: 1px;
+  margin: $spacing-sm auto;
+  background-color: $color-br-gray-lt;
+  border: 0;
+}
+
+[type=text],
+[type=number],
+[type=search],
+[type=password],
+[type=email],
+[type=tel],
+[type=date],
+[type=checkbox],
+[type=radio],
+[type=submit],
+select,
+textarea {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+
+  &:-ms-expand {
+    display: none;
+  }
+}
+
+[type=radio] {
+  border-radius: 50%;
+}
+
+// Remove search close button from input
+[type=text]::-ms-clear { display: none; width: 0; height: 0; }
+[type=text]::-ms-reveal { display: none; width: 0; height: 0; }
+[type="search"]::-webkit-search-decoration,
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-results-button,
+[type="search"]::-webkit-search-results-decoration { display: none; }
+// Remove date formate string from input
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]),
+::-webkit-datetime-edit-text { color: transparent; }
+// Remove number input counter buttons
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+[type="submit"],
+button {
+  @include font("body-md");
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: inherit;
+  }
+}

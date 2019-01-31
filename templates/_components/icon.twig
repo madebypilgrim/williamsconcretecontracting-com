@@ -1,0 +1,18 @@
+{##
+ # Icon component
+ # @param {string} icon
+ #}
+
+{# Params #}
+{% set icon = icon|default('') %}
+
+{# Variables #}
+{% set handle = 'icon' %}
+
+{# Markup #}
+<i class="{{ handle }}" title="{{ icon|capitalize }}">
+  <svg>
+    <use xlink:href="{{ url('images/sprites/sprites.svg') ~ '#icon-' ~ icon }}"></use>
+  </svg>
+</i>
+

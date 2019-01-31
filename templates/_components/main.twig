@@ -1,0 +1,50 @@
+{##
+ # Main component
+ # @param {string} content
+ #}
+
+{# Params #}
+{% set content = content|default('') %}
+
+{# Variables #}
+{% set handle = 'main' %}
+{% set id = craft.utilities.uniqueId() %}
+{% set contentHandle = handle ~ '__content' %}
+{% set activeClass = 'is-active' %}
+{% set lockedClass = 'is-locked' %}
+{% set unloadingClass = 'is-unloading' %}
+
+{# Markup #}
+<div id="{{ id }}" class="{{ handle }}">
+  {# Debugging grid #}
+  {% if constant('CRAFT_ENVIRONMENT') != 'production' and currentUser %}
+    <label for="grid-toggle">Toggle Grid</label>
+    <input id="grid-toggle" type="checkbox" style="display:none" checked />
+    <div class="{{ handle }}__layout-guide-cont">
+      {% for i in 1..12 %}
+        <div class="{{ handle }}__layout-guide-cont__span"></div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="{{ handle }}__content-cont">
+    <div class="{{ contentHandle }}">
+      {{ content|raw }}
+    </div>
+  </div>
+
+  {# Instantiate JS component class #}
+  {% set jsConfig = {
+    handle: handle,
+    id: id,
+    contentHandle: '.' ~ contentHandle,
+    activeClass: activeClass,
+    lockedClass: lockedClass,
+    unloadingClass: unloadingClass,
+  } %}
+
+  <script type="text/javascript">
+    window[{{ constant('SITE_HANDLE')|json_encode|raw }}].components.push({{ jsConfig|json_encode|raw }});
+  </script>
+</div>
+

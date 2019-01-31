@@ -1,0 +1,61 @@
+{# Variables #}
+{% set metaNoIndex = metaNoIndex is defined and metaNoIndex %}
+{% set metaCanonical = metaCanonical|default('') %}
+{% set metaTitle = metaTitle|default('') %}
+{% set metaDescription = metaDescription|default('') %}
+{% set metaFeaturedImageUrl = metaFeaturedImageUrl|default('') %}
+
+{# Set defaults from the metaData field if not set at entry level #}
+{% if entry is defined and entry['metaData'] is not empty %}
+  {% set metaTitle = metaTitle|default(entry.metaData.metaTitle|default(entry.title ~ ' | ' ~ siteName)) %}
+  {% set metaDescription = metaDescription|default(entry.metaData.metaDescription) %}
+
+  {% set metaFeaturedImage = entry.metaData.metaFeaturedImage.one() %}
+  {% if metaFeaturedImageUrl is empty and metaFeaturedImage %}
+    {% set metaFeaturedImageUrl = metaFeaturedImage.url %}
+  {% endif %}
+{% endif %}
+
+{# Markup #}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+{# Robots noindex (development and staging only) #}
+{% if constant('CRAFT_ENVIRONMENT') != 'production' or metaNoIndex %}
+  <meta name="robots" content="noindex" />
+{% endif %}
+
+{% if metaCanonical is not empty %}
+  <link rel="canonical" href="{{ metaCanonical }}" />
+{% endif %}
+
+{# Main meta information and icon #}
+<title>{{ metaTitle }}</title>
+
+<meta name="description" content="{{ metaDescription }}" />
+<link rel="home" href="{{ siteUrl }}" />
+
+{# Open Graph meta tags #}
+<meta property="og:site_name" content="{{ siteName }}" />
+<meta property="og:url" content="{{ craft.app.request.url }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ metaTitle }}" />
+<meta property="og:description" content="{{ metaDescription }}" />
+<meta property="og:image" content="{{ metaFeaturedImageUrl }}" />
+<meta property="og:image:width" content="600" />
+<meta property="og:image:height" content="314" />
+
+{# Twitter card meta tags #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="{{ craft.app.request.url }}" />
+<meta name="twitter:title" content="{{ metaTitle }}" />
+<meta name="twitter:description" content="{{ metaDescription }}" />
+<meta name="twitter:image" content="{{ metaFeaturedImageUrl }}" />
+
+{# Authorship #}
+<meta name="author" content="madebypilgrim.com" />
+<link type="text/plain" rel="author" href="/humans.txt" />
+
+{# Web app manifest #}
+<link rel="manifest" href="/site.webmanifest">

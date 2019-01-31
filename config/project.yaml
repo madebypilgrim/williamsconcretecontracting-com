@@ -1,0 +1,278 @@
+dateModified: 1548929870
+email:
+  fromEmail: trevor@madebypilgrim.com
+  fromName: 'Williams Concrete Contracting'
+  transportType: craft\mail\transportadapters\Sendmail
+fieldGroups:
+  348ab01c-5a4d-4b4f-bd52-ea3595be3f34:
+    name: 'Page Fields'
+fields:
+  b024e315-d048-43a9-b63f-2915a181b8c9:
+    contentColumnType: string
+    fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
+    handle: metaData
+    instructions: ''
+    name: 'Meta Data'
+    searchable: true
+    settings:
+      columns:
+        2:
+          width: ''
+        3:
+          width: ''
+      contentTable: '{{%stc_metadata}}'
+      fieldLayout: table
+      localizeBlocks: false
+      maxRows: ''
+      minRows: ''
+      selectionLabel: ''
+      staticField: '1'
+    translationKeyFormat: null
+    translationMethod: site
+    type: verbb\supertable\fields\SuperTableField
+plugins:
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.8
+sections:
+  4a4dbf72-cfc2-4320-ab42-0efe98cf19db:
+    enableVersioning: true
+    entryTypes:
+      a78926b7-bda6-4d7d-a902-8eef35aaff5b:
+        handle: homepage
+        hasTitleField: false
+        name: Homepage
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: homepage
+    name: Homepage
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: homepage
+        uriFormat: __home__
+    type: single
+  8f393a96-f5b9-4e13-b256-79a91508dbee:
+    enableVersioning: true
+    entryTypes:
+      fa7db8a4-fd61-4369-90ee-8922e11af848:
+        handle: contact
+        hasTitleField: false
+        name: Contact
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: contact
+    name: Contact
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: contact
+        uriFormat: contact
+    type: single
+  a83e1050-2c40-4ffb-ac44-7de9a879bda5:
+    enableVersioning: true
+    entryTypes:
+      d96571bf-a7a2-4756-a2b8-9471a64af584:
+        handle: about
+        hasTitleField: false
+        name: About
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: about
+    name: About
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: about
+        uriFormat: about
+    type: single
+  c6826302-2eab-4b14-8bad-7aed3f62a599:
+    enableVersioning: true
+    entryTypes:
+      aae3eb50-6bca-4941-81a6-76a198d1350e:
+        handle: services
+        hasTitleField: false
+        name: Services
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: services
+    name: Services
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: services
+        uriFormat: services
+    type: single
+  e5202ff0-8ca8-4182-9354-26dea267b535:
+    enableVersioning: true
+    entryTypes:
+      f9b571ca-a590-4372-80aa-522e879ce527:
+        handle: projectsEntries
+        hasTitleField: true
+        name: 'Projects Entries'
+        sortOrder: 1
+        titleFormat: null
+        titleLabel: Title
+    handle: projectsEntries
+    name: 'Projects Entries'
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: projects/_entry
+        uriFormat: 'projects/{slug}'
+    type: channel
+  e932b411-b438-478f-8662-67ae57098ac3:
+    enableVersioning: true
+    entryTypes:
+      8b57b137-3169-4875-a9a2-97e860851b6e:
+        handle: projects
+        hasTitleField: false
+        name: Projects
+        sortOrder: 1
+        titleFormat: '{section.name|raw}'
+        titleLabel: null
+    handle: projects
+    name: Projects
+    propagateEntries: true
+    siteSettings:
+      ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+        enabledByDefault: true
+        hasUrls: true
+        template: projects/index
+        uriFormat: projects
+    type: single
+siteGroups:
+  7d57060f-607c-45db-be7e-be1f6af515f1:
+    name: 'Williams Concrete Contracting'
+sites:
+  ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+    baseUrl: $DEFAULT_SITE_URL
+    handle: default
+    hasUrls: true
+    language: en-US
+    name: 'Williams Concrete Contracting'
+    primary: true
+    siteGroup: 7d57060f-607c-45db-be7e-be1f6af515f1
+    sortOrder: 1
+superTableBlockTypes:
+  fa088184-7869-4d03-a329-d590565fad28:
+    field: b024e315-d048-43a9-b63f-2915a181b8c9
+    fieldLayouts:
+      4837c906-8f50-4108-b1ad-7c70f0667b8e:
+        tabs:
+          -
+            fields:
+              3abf84c5-d5b4-47a3-8eaa-b067d866757f:
+                required: false
+                sortOrder: 1
+              44b3980c-a1b9-4777-a24b-a1b30f9b89eb:
+                required: false
+                sortOrder: 2
+              c3b3e920-b05a-4165-89e2-9eb8b8a39831:
+                required: false
+                sortOrder: 3
+            name: Content
+            sortOrder: 1
+    fields:
+      3abf84c5-d5b4-47a3-8eaa-b067d866757f:
+        contentColumnType: text
+        fieldGroup: null
+        handle: metaTitle
+        instructions: ''
+        name: 'Meta Title'
+        searchable: true
+        settings:
+          charLimit: '100'
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      44b3980c-a1b9-4777-a24b-a1b30f9b89eb:
+        contentColumnType: text
+        fieldGroup: null
+        handle: metaDescription
+        instructions: ''
+        name: 'Meta Description'
+        searchable: true
+        settings:
+          charLimit: '255'
+          code: ''
+          columnType: text
+          initialRows: '4'
+          multiline: ''
+          placeholder: ''
+        translationKeyFormat: null
+        translationMethod: none
+        type: craft\fields\PlainText
+      c3b3e920-b05a-4165-89e2-9eb8b8a39831:
+        contentColumnType: string
+        fieldGroup: null
+        handle: metaFeaturedImage
+        instructions: ''
+        name: 'Meta Featured Image'
+        searchable: true
+        settings:
+          allowedKinds:
+            - image
+          defaultUploadLocationSource: 'volume:87d3839a-4bf1-44e2-8139-bad516bf7b92'
+          defaultUploadLocationSubpath: ''
+          limit: '1'
+          localizeRelations: false
+          restrictFiles: '1'
+          selectionLabel: 'Add a meta featured image'
+          singleUploadLocationSource: 'volume:87d3839a-4bf1-44e2-8139-bad516bf7b92'
+          singleUploadLocationSubpath: ''
+          source: null
+          sources:
+            - 'volume:87d3839a-4bf1-44e2-8139-bad516bf7b92'
+          targetSiteId: null
+          useSingleFolder: ''
+          viewMode: list
+        translationKeyFormat: null
+        translationMethod: site
+        type: craft\fields\Assets
+system:
+  edition: solo
+  live: true
+  name: 'Williams Concrete Contracting'
+  schemaVersion: 3.1.23
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: ''
+  photoVolumeUid: null
+  requireEmailVerification: true
+volumes:
+  87d3839a-4bf1-44e2-8139-bad516bf7b92:
+    handle: siteImages
+    hasUrls: true
+    name: 'Site Images'
+    settings:
+      path: /Users/tplassman/Sites/mbp/williamsconcretecontracting/public_html/uploads/images/site
+    sortOrder: null
+    type: craft\volumes\Local
+    url: 'http://williamsconcretecontracting.localhost/uploads/images/site'

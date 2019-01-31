@@ -1,0 +1,23 @@
+{##
+ # Loader component
+ #}
+
+{# Variables #}
+{% set id = craft.utilities.uniqueId() %}
+{% set handle = 'loader' %}
+{% set loadingClass = 'is-loading' %}
+
+{# Markup #}
+<div id="{{ id }}" class="{{ handle }}">
+
+  {# Instantiate JS component class #}
+  {% set jsSettings = {
+    handle: handle,
+    id: id,
+    loadingClass: loadingClass,
+   } %}
+
+  <script type="text/javascript">
+    window.{{ constant('SITE_HANDLE') }}.components.push({{ jsSettings|json_encode|raw }});
+  </script>
+</div>

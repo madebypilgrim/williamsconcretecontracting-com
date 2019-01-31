@@ -1,0 +1,10 @@
+/.env
+/.idea
+/sync.sh
+/deploy.sh
+/vendor
+/node_modules
+/npm-debug.log
+/public_html/uploads
+/storage
+.DS_Store

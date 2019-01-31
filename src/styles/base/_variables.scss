@@ -1,0 +1,96 @@
+/* Breakpoints */
+
+$screen-sm-min: 768px;
+$screen-xs-max: $screen-sm-min - 1;
+$screen-md-min: 1080px;
+$screen-sm-max: $screen-md-min - 1;
+$screen-lg-min: 1366px;
+$screen-md-max: $screen-lg-min - 1;
+$screen-xl-min: 1800px;
+$screen-lg-max: $screen-xl-min - 1;
+
+/* Spacing */
+
+$spacing-xs: 12px;
+$spacing-sm: 24px;
+$spacing-md: 48px;
+$spacing-lg: 96px;
+$spacing-xl: 128px;
+
+/* Layout */
+
+$min-page-width: 320px;
+$max-page-width: 1900px;
+$max-width-xs: 220px;
+$max-width-sm: 330px;
+$max-width-md: 550px;
+$max-width-lg: 770px;
+$max-width-xl: 990px;
+$gutter-sm: $spacing-sm;
+$gutter-md: $spacing-sm;
+$gutter-lg: $spacing-sm;
+$grid-sm: (
+  base: 4,
+  cont-spread: "wider",
+  gutter: $gutter-sm,
+);
+$grid-md: (
+  base: 8,
+  cont-spread: "wider",
+  gutter: $gutter-md,
+);
+$grid-lg: (
+  base: 12,
+  cont-spread: "wider",
+  gutter: $gutter-lg,
+);
+$nav-height-sm: $spacing-xs * 5;
+$nav-height-md: $spacing-xs * 6;
+$nav-height-lg: $spacing-xs * 7;
+$button-size: $spacing-xs * 5;
+$action-button-size: $spacing-xs * 4;
+$input-height: $button-size;
+$image-height-sm: 250px;
+$image-height-md: 500px;
+$image-height-lg: 700px;
+
+/* Colors */
+
+$color-white: #FFF;
+$color-black: #373232;
+$color-fg-gray-lt: #DCE1E5;
+$color-fg-gray-md: #999;
+$color-fg-gray-dk: #373232;
+$color-bg-gray-lt: #F4F5F7;
+$color-bg-gray-dk: #292F41;
+$color-br-gray-lt: #DEDEDE;
+$color-br-gray-dk: #111;
+
+/* Font */
+
+$font-family-sans-lt: "HelveticaNeueLTPro-Lt" "Helvetica", sans-serif;
+$font-family-sans-lt-it: "HelveticaNeueLTPro-LtIt" "Helvetica", sans-serif;
+$font-family-sans-md: "HelveticaNeueLTPro-Md" "Helvetica", sans-serif;
+$font-family-sans-md-it: "HelveticaNeueLTPro-MdIt" "Helvetica", sans-serif;
+$font-family-sans-bd: "HelveticaNeueLTPro-Bd" "Helvetica", sans-serif;
+$font-family-sans-bd-it: "HelveticaNeueLTPro-BdIt" "Helvetica", sans-serif;
+$font-family-serif-md: "ltc_caslon_regular", times, serif;;
+$font-family-serif-md-it: "ltc_caslon_italic", times, serif;;
+$font-family-serif-bd: "ltc_caslon_bold", times, serif;;
+$font-family-serif-bd-it: "ltc_caslon_bold_italic", times, serif;;
+$font-weight-lt: 200;
+$font-weight-md: 500;
+$font-weight-bd: 700;
+
+/* Animations */
+
+$animate-profile: ease-out;
+$animate-speed-sm: 0.2s;
+$animate-speed-md: 0.3s;
+$animate-speed-lg: 0.5s;
+$animate-speed-xl: 0.8s;
+$animate-sm: $animate-speed-sm $animate-profile;
+$animate-md: $animate-speed-md $animate-profile;
+$animate-lg: $animate-speed-lg $animate-profile;
+$animate-xl: $animate-speed-xl $animate-profile;
+

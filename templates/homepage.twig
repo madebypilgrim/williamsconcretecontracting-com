@@ -1,0 +1,22 @@
+{##
+ # Homepage single
+ # @param {Entry} entry
+ #}
+
+{#
+{% extends craft.app.request.isAjax() and not craft.app.request.isLivePreview() ? '_layouts/blank' : '_layouts/main' %}
+#}
+{% extends '_layouts/main' %}
+
+{# Markup #}
+{% block content %}
+  <article>
+    <header>
+      Hello, World!
+    </header>
+
+    <section>
+      What a beautiful day :)
+    </section>
+  </article>
+{% endblock %}

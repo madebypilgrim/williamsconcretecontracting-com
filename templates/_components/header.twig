@@ -1,0 +1,23 @@
+{##
+ # Header component
+ # @global {GlobalSet} gHeader
+ #}
+
+{# Params #}
+
+{# Variables #}
+{% set handle = 'header' %}
+
+{# Markup #}
+<div class="{{ handle }}">
+  <a href="/" title="Home">
+    LOGO
+  </a>
+  <nav>
+    <a href="/" title="Overview">Overview</a>
+    <a href="/services" title="Contact">Contact</a>
+    <a href="/projects" title="Projects">Projects</a>
+    <a href="/about" title="About Us">About Us</a>
+    <a href="/contact" title="Contact">Contact</a>
+  </nav>
+</div>
