@@ -4,6 +4,9 @@
  #}
 
 {# Params #}
+{% set aside %}
+  {% block aside %}{% endblock %}
+{% endset %}
 {% set content %}
   {% block content %}{% endblock %}
 {% endset %}
@@ -34,6 +37,7 @@
 
     <main>
       {% include '_components/main' with {
+        aside: aside,
         content: content,
       } %}
     </main>

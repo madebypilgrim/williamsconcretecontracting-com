@@ -1,6 +1,10 @@
 {##
  # Homepage single
  # @param {Entry} entry
+ # |_@param {Assets} backgroundImage
+ # |_@param {PlainText} pageHeading
+ # |_@param {PlainText} pageSubheading
+ # |_@param {Matrix} overviewTeasers
  #}
 
 {#
@@ -8,15 +12,30 @@
 #}
 {% extends '_layouts/main' %}
 
+{# Params #}
+{% set backgroundImage = entry.backgroundImage.one() %}
+
 {# Markup #}
+{% block aside %}
+  <aside>
+    {% if backgroundImage %}
+      {% include '_components/background-image' with { url: backgroundImage.url } %}
+    {% endif %}
+  </aside>
+{% endblock %}
+
 {% block content %}
   <article>
     <header>
-      Hello, World!
+      {% include '_components/page-heading' with {
+        heading: entry.pageHeading,
+      } %}
     </header>
 
     <section>
-      What a beautiful day :)
+      {% include '_components/overview-teasers' with {
+        teasers: entry.overviewTeasers.all(),
+      } %}
     </section>
   </article>
 {% endblock %}

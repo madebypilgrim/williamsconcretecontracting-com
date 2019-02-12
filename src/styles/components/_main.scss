@@ -44,13 +44,10 @@ $unloading-class: "is-unloading";
     }
   }
 
-  &__content {
+  &__main-cont {
+    @include container;
     position: relative;
     opacity: 0;
-    min-height: 100vh;
-    padding-top: $nav-height-lg;
-    background-color: $color-black;
-    color: $color-white;
     text-align: center;
     transition: opacity $animate-lg;
 
@@ -62,28 +59,19 @@ $unloading-class: "is-unloading";
       opacity: 0;
     }
 
-    // Not sure if this is needed
-    // & hr {
-    //   @include span($cols: 4, $grid: $grid-sm);
-    //   @include push($grid: $grid-sm);
+    &__aside-cont {
+      @include span(6, "wide");
+      position: relative;
+      min-height: 100vh;
 
-    //   @media (min-width: $screen-sm-min) {
-    //     @include span($cols: 8, $grid: $grid-md);
-    //     @include push($grid: $grid-md);
-    //   }
+      & > aside {
+        @include fullOverlay;
+      }
+    }
 
-    //   @media (min-width: $screen-md-min) {
-    //     @include span(10);
-    //     @include push(1, "wider");
-    //   }
-
-    //   &.small {
-    //     @media (min-width: $screen-md-min) {
-    //       @include span(8);
-    //       @include push(2, "wider");
-    //     }
-    //   }
-    // }
+    &__content-cont {
+      @include span(6, "wider");
+      padding-top: $nav-height-lg;
+    }
   }
 }
-

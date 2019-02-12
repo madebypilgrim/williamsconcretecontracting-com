@@ -1,0 +1,15 @@
+{##
+ # Page heading component
+ # @param {string} heading
+ #}
+
+{# Params #}
+{% set heading = heading|default('') %}
+
+{# Variables #}
+{% set handle = 'page-heading' %}
+
+{# Markup #}
+<div class="{{ handle }}">
+  <h1>{{ heading }}</h1>
+</div>

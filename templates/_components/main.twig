@@ -1,15 +1,16 @@
 {##
  # Main component
+ # @param {string} aside
  # @param {string} content
  #}
 
 {# Params #}
+{% set aside = aside|default('') %}
 {% set content = content|default('') %}
 
 {# Variables #}
 {% set handle = 'main' %}
 {% set id = craft.utilities.uniqueId() %}
-{% set contentHandle = handle ~ '__content' %}
 {% set activeClass = 'is-active' %}
 {% set lockedClass = 'is-locked' %}
 {% set unloadingClass = 'is-unloading' %}
@@ -27,8 +28,11 @@
     </div>
   {% endif %}
 
-  <div class="{{ handle }}__content-cont">
-    <div class="{{ contentHandle }}">
+  <div class="{{ handle }}__main-cont">
+    <div class="{{ handle }}__main-cont__aside-cont">
+      {{ aside|raw }}
+    </div>
+    <div class="{{ handle }}__main-cont__content-cont">
       {{ content|raw }}
     </div>
   </div>
@@ -37,7 +41,6 @@
   {% set jsConfig = {
     handle: handle,
     id: id,
-    contentHandle: '.' ~ contentHandle,
     activeClass: activeClass,
     lockedClass: lockedClass,
     unloadingClass: unloadingClass,
