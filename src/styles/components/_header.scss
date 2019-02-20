@@ -1,8 +1,27 @@
 $handle: "header";
 
 .#{$handle} {
-  @include absolute(0, 0, auto, 0);
-  position: fixed;
-  z-index: 10;
-  text-align: center;
+    @include absolute(0, 0, auto, 0);
+    position: fixed;
+    z-index: 10;
+
+    // Logo
+    & > a {
+        @include absolute($spacing-xs, auto, auto, $gutter-sm);
+    }
+
+    & > nav {
+        @include pad($spacing-sm);
+        display: flex;
+        width: 50%;
+        margin: $spacing-sm 0 auto auto;
+
+        & > a {
+            @include listMargin($spacing-sm, true);
+
+            &:last-child {
+                margin: auto 0 auto auto;
+            }
+        }
+    }
 }
