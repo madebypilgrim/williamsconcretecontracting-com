@@ -11,33 +11,36 @@
 
 {# Markup #}
 {% if teasers is not empty %}
-  <div class="{{ handle }}">
-    {% for teaser in teasers %}
-      {% set image = teaser.teaserImage.one() %}
-      {% set cta = teaser.teaserCta.one() %}
+    <div class="{{ handle }}">
+        {% for teaser in teasers %}
+            {% set image = teaser.teaserImage.one() %}
+            {% set cta = teaser.teaserCta.one() %}
 
-      <div class="{{ handle }}__teaser-cont {{ handle }}__teaser-cont--{{ teaser.type.handle }}">
-        {% if teaser.type.handle == 'statTeaser' %}
-          {% set stat = teaser.teaserStat.one() %}
+            <div class="{{ handle }}__teaser-cont {{ handle }}__teaser-cont--{{ teaser.type.handle|kebab }}">
+                {% if teaser.type.handle == 'statTeaser' %}
+                    {% set stat = teaser.teaserStat.one() %}
 
-          {% if stat %}
-            <em>
-              <small>{{ stat.statPrefix }}</small>
-              <strong>{{ stat.statNumber }}</strong>
-            </em>
-          {% endif %}
-        {% endif %}
+                    {% if stat %}
+                        <em>
+                            <small>{{ stat.statPrefix }}</small>
+                            <strong>{{ stat.statNumber }}</strong>
+                        </em>
+                    {% endif %}
+                {% endif %}
 
-        {% if image %}
-          <img src={{ image.url }}" alt="{{ image.title }}" />
-        {% endif %}
-        <h2>{{ teaser.teaserCopy }}</h2>
-        {% if cta %}
-          <a href="{{ cta.ctaPage.one().url|default('') }}" title="{{ cta.ctaTitle }}">
-            {{ cta.ctaTitle }}
-          </a>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
+                {% if image %}
+                    <img src="{{ image.url }}" alt="{{ image.title }}" />
+                {% endif %}
+                <div class="{{ handle }}__teaser-cont__text-cont">
+                    <h2>{{ teaser.teaserCopy }}</h2>
+                    {% if cta %}
+                        <a href="{{ cta.ctaPage.one().url|default('') }}" title="{{ cta.ctaTitle }}">
+                            {{ cta.ctaTitle }}
+                            {% include '_components/icon' with { icon: 'arrow-right' } %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endif %}

@@ -1,0 +1,27 @@
+{##
+ # Next ctas component
+ # @param {[]MatrixBlock} ctas
+ #}
+
+{# Params #}
+{% set ctas = ctas|default([]) %}
+
+{# Variables #}
+{% set handle = 'next-ctas' %}
+
+{# Markup #}
+{% if ctas is not empty %}
+    <div class="{{ handle }}">
+        {% for cta in ctas %}
+            <div class="{{ handle }}__cta-cont">
+                <h3>{{ cta.ctaHeading }}</h3>
+                <a
+                    href="{{ cta.ctaLink.linkPage.one()|default('') }}"
+                    title="{{ cta.ctaLink.linkTitle }}">
+                    {{ cta.ctaLink.linkTitle }}
+                    {% include '_components/icon' with { icon: 'arrow-right' } %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

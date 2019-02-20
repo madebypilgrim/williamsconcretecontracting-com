@@ -1,0 +1,12 @@
+$handle: "icon";
+
+.#{$handle} {
+    position: relative;
+    display: inline-block;
+    width: $spacing-xs * 1.5;
+    height: $spacing-xs * 1.5;
+
+    & > svg {
+        @include fullOverlay();
+    }
+}

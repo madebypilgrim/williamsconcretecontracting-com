@@ -1,0 +1,17 @@
+{##
+ # Sticky background component
+ # @param {Asset} image
+ #}
+
+{# Params #}
+{% set image = image|default(null) %}
+
+{# Variables #}
+{% set handle = 'sticky-background' %}
+
+{# Markup #}
+{% if image %}
+    <div class="{{ handle }}">
+        {% include '_components/background-image' with { url: image.url } %}
+    </div>
+{% endif %}

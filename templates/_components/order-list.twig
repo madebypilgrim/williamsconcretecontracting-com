@@ -1,0 +1,25 @@
+{##
+ # Ordered list component
+ # @param {[]MatrixBlock} items
+ #}
+
+{# Params #}
+{% set items = items|default([]) %}
+
+{# Variables #}
+{% set handle = 'ordered-list' %}
+
+{# Markup #}
+{% if items is not empty %}
+    <div class="{{ handle }}">
+        <ul>
+            {% for item in items %}
+                <li>
+                    <em>{{ loop.index < 10 ? '0' }}{{ loop.index }}</em>
+                    <h2>{{ item.itemTitle }}</h2>
+                    <p>{{ item.itemBody }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

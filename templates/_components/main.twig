@@ -1,12 +1,12 @@
 {##
  # Main component
- # @param {string} aside
- # @param {string} content
+ # @param {string} left
+ # @param {string} right
  #}
 
 {# Params #}
-{% set aside = aside|default('') %}
-{% set content = content|default('') %}
+{% set left = left|default('') %}
+{% set right = right|default('') %}
 
 {# Variables #}
 {% set handle = 'main' %}
@@ -17,37 +17,37 @@
 
 {# Markup #}
 <div id="{{ id }}" class="{{ handle }}">
-  {# Debugging grid #}
-  {% if constant('CRAFT_ENVIRONMENT') != 'production' and currentUser %}
-    <label for="grid-toggle">Toggle Grid</label>
-    <input id="grid-toggle" type="checkbox" style="display:none" checked />
-    <div class="{{ handle }}__layout-guide-cont">
-      {% for i in 1..12 %}
-        <div class="{{ handle }}__layout-guide-cont__span"></div>
-      {% endfor %}
-    </div>
-  {% endif %}
+    {# Debugging grid #}
+    {% if constant('CRAFT_ENVIRONMENT') != 'production' and currentUser %}
+        <label for="grid-toggle">Toggle Grid</label>
+        <input id="grid-toggle" type="checkbox" style="display:none" checked />
+        <div class="{{ handle }}__layout-guide-cont">
+            {% for i in 1..12 %}
+                <div class="{{ handle }}__layout-guide-cont__span"></div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-  <div class="{{ handle }}__main-cont">
-    <div class="{{ handle }}__main-cont__aside-cont">
-      {{ aside|raw }}
+    <div class="{{ handle }}__main-cont">
+        <div class="{{ handle }}__main-cont__left-cont">
+            {{ left|raw }}
+        </div>
+        <div class="{{ handle }}__main-cont__right-cont">
+            {{ right|raw }}
+        </div>
     </div>
-    <div class="{{ handle }}__main-cont__content-cont">
-      {{ content|raw }}
-    </div>
-  </div>
 
-  {# Instantiate JS component class #}
-  {% set jsConfig = {
-    handle: handle,
-    id: id,
-    activeClass: activeClass,
-    lockedClass: lockedClass,
-    unloadingClass: unloadingClass,
-  } %}
+    {# Instantiate JS component class #}
+    {% set jsConfig = {
+        handle: handle,
+        id: id,
+        activeClass: activeClass,
+        lockedClass: lockedClass,
+        unloadingClass: unloadingClass,
+    } %}
 
-  <script type="text/javascript">
-    window[{{ constant('SITE_HANDLE')|json_encode|raw }}].components.push({{ jsConfig|json_encode|raw }});
-  </script>
+    <script type="text/javascript">
+        window[{{ constant('SITE_HANDLE')|json_encode|raw }}].components.push({{ jsConfig|json_encode|raw }});
+    </script>
 </div>
 

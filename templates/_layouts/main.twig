@@ -1,14 +1,15 @@
 {##
  # Main layout
- # @block {string} content
+ # @block {string} left
+ # @block {string} right
  #}
 
 {# Params #}
-{% set aside %}
-  {% block aside %}{% endblock %}
+{% set left %}
+  {% block left %}{% endblock %}
 {% endset %}
-{% set content %}
-  {% block content %}{% endblock %}
+{% set right %}
+  {% block right %}{% endblock %}
 {% endset %}
 
 {# Markup #}
@@ -37,8 +38,8 @@
 
     <main>
       {% include '_components/main' with {
-        aside: aside,
-        content: content,
+        left: left,
+        right: right,
       } %}
     </main>
 

@@ -12,30 +12,25 @@
 #}
 {% extends '_layouts/main' %}
 
-{# Params #}
-{% set backgroundImage = entry.backgroundImage.one() %}
-
 {# Markup #}
-{% block aside %}
-  <aside>
-    {% if backgroundImage %}
-      {% include '_components/background-image' with { url: backgroundImage.url } %}
-    {% endif %}
-  </aside>
+{% block left %}
+    {% include '_components/sticky-background' with {
+        image: entry.backgroundImage.one(),
+    } %}
 {% endblock %}
 
-{% block content %}
-  <article>
-    <header>
-      {% include '_components/page-heading' with {
-        heading: entry.pageHeading,
-      } %}
-    </header>
+{% block right %}
+    <article>
+        <header>
+            {% include '_components/page-heading' with {
+                heading: entry.pageHeading,
+            } %}
+        </header>
 
-    <section>
-      {% include '_components/overview-teasers' with {
-        teasers: entry.overviewTeasers.all(),
-      } %}
-    </section>
-  </article>
+        <section>
+            {% include '_components/overview-teasers' with {
+                teasers: entry.overviewTeasers.all(),
+            } %}
+        </section>
+    </article>
 {% endblock %}

@@ -71,13 +71,13 @@
   }
   // List item
   @if ($size == "heading-sm") {
-    @include font-size-rem(2.2);
+    @include font-size-rem(2.0);
     @include line-height-rem(3.2);
     font-family: $font-family-serif-md;
     letter-spacing: -0.2px;
 
     @media (min-width: $screen-md-min) {
-      @include font-size-rem(2.4);
+      @include font-size-rem(2.0);
       @include line-height-rem(3.4);
     }
   }

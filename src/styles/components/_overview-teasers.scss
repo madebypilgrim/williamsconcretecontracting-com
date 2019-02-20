@@ -1,0 +1,93 @@
+$handle: "overview-teasers";
+
+.#{$handle} {
+    @include pad($spacing-sm);
+    padding-bottom: $spacing-xl;
+
+    &__teaser-cont {
+        @include listMargin($spacing-lg);
+
+        @media (min-width: $screen-md-min) {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+
+        & > img {
+            display: block;
+            flex-basis: 70%;
+            width: 100%;
+
+            @media (max-width: $screen-sm-max) {
+                margin-bottom: $spacing-md;
+            }
+        }
+
+        &--stat-teaser {
+            @media (max-width: $screen-sm-max) {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-content: center;
+            }
+
+            & > em {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 30%;
+                justify-content: center;
+                position: relative;
+                margin-right: $spacing-sm;
+
+                & > small {
+                    @include centerer(false, true);
+                    left: -$spacing-sm;
+                    transform: rotate(270deg);
+                    text-align: right;
+                    width: $spacing-lg;
+                }
+
+                & > strong {
+                    font-size: $spacing-lg;
+                    line-height: $spacing-lg;
+                    padding-left: $spacing-xs * 3;
+                }
+            }
+
+            & > img {
+                flex-basis: unset;
+                width: inherit;
+
+                @media (min-width: $screen-md-min) {
+                    order: 3;
+                }
+            }
+        }
+
+        &__text-cont {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+
+            @media (min-width: $screen-md-min) {
+                @include pad($spacing-sm);
+            }
+
+            & > h2 {
+                @include font("body-lg");
+                max-width: $max-width-sm;
+            }
+
+            & > a {
+                margin-top: $spacing-sm;
+
+                & > i {
+                    display: inline-block;
+                    margin-left: $spacing-xs;
+                    fill: $color-br-gray-lt;
+                }
+            }
+        }
+    }
+}

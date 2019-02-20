@@ -1,0 +1,16 @@
+$handle: "page-heading";
+
+.#{$handle} {
+    @include space($spacing-xl, $spacing-lg);
+    @include pad($spacing-sm);
+    max-width: $max-width-md;
+
+    & > h1 {
+        @include font("heading-lg");
+    }
+
+    & > p {
+        @include font("body-lg");
+        margin-top: $spacing-xs;
+    }
+}

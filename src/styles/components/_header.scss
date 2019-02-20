@@ -7,14 +7,22 @@ $handle: "header";
 
     // Logo
     & > a {
-        @include absolute($spacing-xs, auto, auto, $gutter-sm);
+        @media (min-width: $screen-sm-min) {
+            @include absolute($spacing-sm, auto, auto, $gutter-sm);
+        }
     }
 
     & > nav {
+        @include full;
+        @include space($spacing-sm);
         @include pad($spacing-sm);
         display: flex;
-        width: 50%;
-        margin: $spacing-sm 0 auto auto;
+        margin: 0 0 auto auto;
+        background: linear-gradient($color-white 65%, transparent);
+
+        @media (min-width: $screen-sm-min) {
+            @include span(6, "wider");
+        }
 
         & > a {
             @include listMargin($spacing-sm, true);

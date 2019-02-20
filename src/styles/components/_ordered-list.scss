@@ -1,0 +1,35 @@
+$handle: "ordered-list";
+
+.#{$handle} {
+    @include pad($spacing-sm);
+
+    & > ul {
+        & > li {
+            @include space($spacing-sm, $spacing-md);
+            border-top: 2px solid $color-br-gray-lt;
+
+            @media (min-width: $screen-md-min) {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            & > em {
+                font-size: $spacing-lg;
+                line-height: $spacing-lg;
+                color: $color-fg-gray-lt;
+            }
+
+            & > h2 {
+                @include font("heading-sm");
+                @include bold;
+                max-width: $max-width-sm;
+                margin-bottom: $spacing-xs;
+            }
+
+            & > p {
+                max-width: $max-width-sm;
+                font-weight: bolder;
+            }
+        }
+    }
+}

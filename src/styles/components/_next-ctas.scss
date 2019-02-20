@@ -1,0 +1,43 @@
+$handle: "next-ctas";
+
+.#{$handle} {
+    @include space($spacing-xl, $spacing-lg);
+    @include pad($spacing-sm);
+    display: flex;
+
+    @media (max-width: $screen-sm-max) {
+        flex-wrap: wrap;
+    }
+
+    &__cta-cont {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+        justify-content: space-between;
+        margin-right: $spacing-xs;
+        padding: $spacing-sm;
+        background-color: $color-black;
+        color: $color-white;
+
+        @media (max-width: $screen-sm-max) {
+            @include listMargin($spacing-xs);
+            flex-basis: 100%;
+            width: 100%;
+        }
+
+        & > h3 {
+            @include font("body-lg");
+        }
+
+        & > a {
+            @include font("body-lg");
+            margin-top: $spacing-lg;
+
+            & > i {
+                display: inline-block;
+                margin-left: $spacing-xs;
+                fill: $color-br-gray-lt;
+            }
+        }
+    }
+}
