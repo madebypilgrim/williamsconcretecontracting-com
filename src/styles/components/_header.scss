@@ -48,7 +48,7 @@ $handle: "header";
         }
 
         @media (min-width: $screen-sm-min) {
-            @include span(5, "wider");
+            @include span(7, "wider");
             @include space($spacing-sm, $spacing-lg);
             @include pad($spacing-sm);
             margin: 0 0 auto auto;
@@ -72,7 +72,7 @@ $handle: "header";
             }
 
             &:last-child {
-                @media (min-width: $screen-sm-min) {
+                @media (min-width: $screen-md-min) {
                     margin: auto 0 auto auto;
                 }
             }

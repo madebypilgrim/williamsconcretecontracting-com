@@ -1,19 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
-    <title>Next CTA</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Homepage-&amp;-Nav" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-        <g id="Services-1440" transform="translate(-1238.000000, -1544.000000)" stroke="#999999" stroke-width="2">
-            <g id="Next" transform="translate(1080.000000, 1394.000000)">
-                <g id="Next-CTA" transform="translate(165.500000, 155.000000) rotate(-90.000000) translate(-165.500000, -155.000000) translate(158.000000, 148.000000)">
-                    <g id="Group" transform="translate(7.500000, 7.121320) rotate(-45.000000) translate(-7.500000, -7.121320) translate(2.500000, 2.621320)">
-                        <path d="M1,2.21288515 L1,7.96078431" id="Line-4"></path>
-                        <path d="M6.26848937,8 L1,8" id="Line-4"></path>
-                        <path d="M9.07114404,0 L2,7.07099158" id="Line-5"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 60 32" style="enable-background:new 0 0 60 32;" xml:space="preserve">
+<path id="arrow-right" d="M47.6,12.5l-8.5-7.9L43.4,0L60,15.5L43.4,31.1l-4.2-4.5l8.5-7.9H0v-6.2H47.6z"/>
 </svg>
