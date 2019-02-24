@@ -62,6 +62,10 @@ $unloading-class: "is-unloading";
             @include full;
 
             @media (min-width: $screen-sm-min) {
+                @include span(5, "wide");
+            }
+
+            @media (min-width: $screen-md-min) {
                 @include span(6, "wide");
             }
         }
@@ -70,6 +74,10 @@ $unloading-class: "is-unloading";
             @include full;
 
             @media (min-width: $screen-sm-min) {
+                @include span(7, "wider");
+            }
+
+            @media (min-width: $screen-md-min) {
                 @include span(6, "wider");
             }
         }

@@ -7,29 +7,128 @@ $handle: "header";
 
     // Logo
     & > a {
+        @include absolute($spacing-sm, auto, auto, $gutter-sm);
+        z-index: 1;
+        color: $color-white;
+    }
+
+    & > label {
+        @include absolute($spacing-sm, $gutter-sm, auto, auto);
+        z-index: 1;
+        color: $color-white;
+        cursor: pointer;
+
         @media (min-width: $screen-sm-min) {
-            @include absolute($spacing-sm, auto, auto, $gutter-sm);
+            display: none;
+        }
+
+        & > span {
+            &:first-child { display: block; }
+            &:last-child { display: none; }
         }
     }
 
     & > nav {
         @include full;
-        @include space($spacing-sm);
-        @include pad($spacing-sm);
         display: flex;
-        margin: 0 0 auto auto;
-        background: linear-gradient($color-white 65%, transparent);
+
+        @media (max-width: $screen-xs-max) {
+            @include fullOverlay;
+            @include space($spacing-lg);
+            @include pad($gutter-sm);
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            height: 100vh;
+            transform: translateX(100%);
+            background-color: $color-black;
+            color: $color-white;
+            font-size: $spacing-sm;
+            transition: transform $animate-sm;
+        }
 
         @media (min-width: $screen-sm-min) {
+            @include span(5, "wider");
+            @include space($spacing-sm, $spacing-lg);
+            @include pad($spacing-sm);
+            margin: 0 0 auto auto;
+            background: linear-gradient($color-white 25%, transparent);
+        }
+
+        @media (min-width: $screen-md-min) {
             @include span(6, "wider");
         }
 
         & > a {
-            @include listMargin($spacing-sm, true);
+            @media (max-width: $screen-xs-max) {
+                @include listMargin($spacing-md);
+                display: block;
+                opacity: 0;
+                transform: translateY($spacing-md);
+            }
+
+            @media (min-width: $screen-sm-min) {
+                @include listMargin($spacing-sm, true);
+            }
 
             &:last-child {
-                margin: auto 0 auto auto;
+                @media (min-width: $screen-sm-min) {
+                    margin: auto 0 auto auto;
+                }
             }
+
+            $links: 6;
+            @for $i from 1 to $links {
+                // Delayed animation:
+                $animate: 0.5s ($i * 0.035s) ease-in-out;
+
+                &:nth-child(#{$i}) {
+                    @media (max-width: $screen-xs-max) {
+                        transition:
+                            opacity $animate-lg,
+                            transform $animate;
+                    }
+                }
+            }
+        }
+    }
+
+    & > footer {
+        @include absolute(auto, auto, $spacing-sm, $gutter-sm);
+        position: fixed;
+        opacity: 0;
+        z-index: 1;
+        transform: translateX(100%);
+        max-width: $max-width-xs;
+        color: $color-white;
+        transition: opacity $animate-lg, transform $animate-lg;
+        pointer-events: none;
+
+        @media (min-width: $screen-sm-min) {
+            display: none;
+        }
+    }
+
+    // Mobile nav active
+    & > [type="checkbox"]:checked {
+        & + label > span {
+            &:first-child { display: none; }
+            &:last-child { display: block; }
+        }
+
+        & ~ nav {
+            transform: translateX(0);
+
+            & > a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        & ~ footer {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
         }
     }
 }

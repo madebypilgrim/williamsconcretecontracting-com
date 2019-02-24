@@ -1,53 +1,52 @@
 {
-  "name": "starter-kit-gulp",
+  "name": "williamsconcretecontracting-com",
   "version": "1.0.0",
-  "description": "Wray Ward Gulp Build",
+  "description": "",
   "main": "public_html/scripts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:wrayward/starter-kit-gulp.git"
+    "url": ""
   },
   "author": {
-    "name": "Wray Ward",
-    "url": "https://www.wrayward.com"
+    "name": "Trevor Plassman"
   },
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babelify": "^8.0.0",
-    "browser-sync": "^2.6.0",
     "browserify": "^14.5.0",
     "del": "^3.0.0",
-    "dotenv": "^6.0.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-cheerio": "^0.6.2",
     "gulp-clean-css": "^3.9.0",
     "gulp-eslint": "^4.0.0",
     "gulp-htmlhint": "^1.0.0",
     "gulp-imagemin": "^3.4.0",
+    "gulp-livereload": "^3.8.1",
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^5.0.0",
     "gulp-svgstore": "^6.1.0",
     "gulp-uglify": "^3.0.0",
-    "node-sass": "^4.9.2",
+    "tiny-lr": "^1.0.5",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.11.0"
   },
   "dependencies": {
     "classlist-polyfill": "^1.2.0",
+    "google-maps": "^3.3.0",
     "intersection-observer": "^0.5.0",
-    "stickyfilljs": "^2.1.0",
-    "svgxuse": "^1.2.4"
+    "svgxuse": "^1.2.4",
+    "swiper": "^4.4.6"
   }
 }

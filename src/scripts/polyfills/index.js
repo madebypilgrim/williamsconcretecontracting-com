@@ -6,7 +6,6 @@ import './array-findindex';
 import './array-foreach';
 import './array-from';
 import './element-children';
-// import './element-classlist';
 import './object-assign';
 import './string-includes';
 import './window-customevent';
