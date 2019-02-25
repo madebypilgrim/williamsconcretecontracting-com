@@ -18,15 +18,17 @@
 {# Markup #}
 <div id="{{ id }}" class="{{ handle }}">
     {# Debugging grid #}
-    {% if constant('CRAFT_ENVIRONMENT') != 'production' and currentUser %}
-        <label for="grid-toggle">Toggle Grid</label>
-        <input id="grid-toggle" type="checkbox" style="display:none" checked />
-        <div class="{{ handle }}__layout-guide-cont">
-            {% for i in 1..12 %}
-                <div class="{{ handle }}__layout-guide-cont__span"></div>
-            {% endfor %}
-        </div>
-    {% endif %}
+    {#
+     # {% if constant('CRAFT_ENVIRONMENT') != 'production' and currentUser %}
+     #     <label for="grid-toggle">Toggle Grid</label>
+     #     <input id="grid-toggle" type="checkbox" style="display:none" checked />
+     #     <div class="{{ handle }}__layout-guide-cont">
+     #         {% for i in 1..12 %}
+     #             <div class="{{ handle }}__layout-guide-cont__span"></div>
+     #         {% endfor %}
+     #     </div>
+     # {% endif %}
+     #}
 
     <div class="{{ handle }}__main-cont">
         <div class="{{ handle }}__main-cont__left-cont">

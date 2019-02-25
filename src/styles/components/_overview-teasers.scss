@@ -75,26 +75,12 @@ $handle: "overview-teasers";
             }
 
             & > h2 {
-                @include font("body-lg");
                 max-width: $max-width-sm;
             }
 
             & > a {
-                display: flex;
-                align-content: flex-start;
+                @include arrowLink;
                 margin-top: $spacing-sm;
-
-                & > i {
-                    display: inline-block;
-                    margin-top: $spacing-xs / 4;
-                    margin-left: $spacing-xs;
-                    fill: $color-br-gray-lt;
-                    transition: transform $animate-sm;
-                }
-
-                &:hover > i {
-                    transform: translateX($spacing-xs / 2);
-                }
             }
         }
     }

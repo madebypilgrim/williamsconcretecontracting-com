@@ -6,10 +6,15 @@
 {% extends '_layouts/main' %}
 
 {# Markup #}
+{% block left %}
+{% endblock %}
+
 {% block right %}
-  <article>
-    <header>
-      Hello, Contact!
-    </header>
-  </article>
+    <article>
+        <header>
+            {% include '_components/page-heading' with {
+                heading: 'Coming soon!',
+            } %}
+        </header>
+    </article>
 {% endblock %}

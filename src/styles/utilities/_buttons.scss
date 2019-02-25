@@ -1,0 +1,19 @@
+@mixin arrowLink($background-inverted: true) {
+    display: flex;
+    align-content: flex-start;
+
+    & > i {
+        display: inline-block;
+        margin-top: $spacing-xs / 4;
+        margin-left: $spacing-xs;
+        fill: if($background-inverted, $color-br-gray-dk, $color-br-gray-lt);
+        transition: transform $animate-sm;
+    }
+
+    &:hover > i {
+        transform: translateX($spacing-xs / 2);
+    }
+}
+
+@mixin unlineLink() {
+}

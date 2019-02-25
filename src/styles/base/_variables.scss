@@ -30,19 +30,19 @@ $gutter-sm: $spacing-sm;
 $gutter-md: $spacing-sm;
 $gutter-lg: $spacing-sm;
 $grid-sm: (
-  base: 4,
-  cont-spread: "wider",
-  gutter: $gutter-sm,
+    base: 4,
+    cont-spread: "wider",
+    gutter: $gutter-sm,
 );
 $grid-md: (
-  base: 8,
-  cont-spread: "wider",
-  gutter: $gutter-md,
+    base: 8,
+    cont-spread: "wider",
+    gutter: $gutter-md,
 );
 $grid-lg: (
-  base: 12,
-  cont-spread: "wider",
-  gutter: $gutter-lg,
+    base: 12,
+    cont-spread: "wider",
+    gutter: $gutter-lg,
 );
 $nav-height-sm: $spacing-xs * 5;
 $nav-height-md: $spacing-xs * 6;
@@ -57,30 +57,23 @@ $image-height-lg: 700px;
 /* Colors */
 
 $color-white: #FFF;
-$color-black: #373232;
-$color-fg-gray-lt: #DCE1E5;
-$color-fg-gray-md: #999;
-$color-fg-gray-dk: #373232;
-$color-bg-gray-lt: #F4F5F7;
-$color-bg-gray-dk: #292F41;
-$color-br-gray-lt: #DEDEDE;
-$color-br-gray-dk: #111;
+$color-black: #1F1F1F;
+$color-bg-dk-fg-lt: #FFF;
+$color-bg-dk-fg-dk: #BCBCBC;
+$color-bg-lt-fg-lt: #EAEAEA;
+$color-bg-lt-fg-md: #444;
+$color-bg-lt-fg-dk: #1F1F1F;
+$color-bg-gray-dk: #1F1F1F;
+$color-br-gray-lt: #EAEAEA;
+$color-br-gray-dk: #D8D8D8;
 
 /* Font */
 
-$font-family-sans-lt: "HelveticaNeueLTPro-Lt" "Helvetica", sans-serif;
-$font-family-sans-lt-it: "HelveticaNeueLTPro-LtIt" "Helvetica", sans-serif;
-$font-family-sans-md: "HelveticaNeueLTPro-Md" "Helvetica", sans-serif;
-$font-family-sans-md-it: "HelveticaNeueLTPro-MdIt" "Helvetica", sans-serif;
-$font-family-sans-bd: "HelveticaNeueLTPro-Bd" "Helvetica", sans-serif;
-$font-family-sans-bd-it: "HelveticaNeueLTPro-BdIt" "Helvetica", sans-serif;
-$font-family-serif-md: "ltc_caslon_regular", times, serif;;
-$font-family-serif-md-it: "ltc_caslon_italic", times, serif;;
-$font-family-serif-bd: "ltc_caslon_bold", times, serif;;
-$font-family-serif-bd-it: "ltc_caslon_bold_italic", times, serif;;
+$font-family-sans-md: Helvetica Neue,Helvetica,Arial,sans-serif;
+$font-family-serif-md: times, serif;;
 $font-weight-lt: 200;
-$font-weight-md: 500;
-$font-weight-bd: 700;
+$font-weight-md: 400;
+$font-weight-bd: 800;
 
 /* Animations */
 

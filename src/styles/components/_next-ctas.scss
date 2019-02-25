@@ -30,14 +30,8 @@ $handle: "next-ctas";
         }
 
         & > a {
-            @include font("body-lg");
+            @include arrowLink(true);
             margin-top: $spacing-lg;
-
-            & > i {
-                display: inline-block;
-                margin-left: $spacing-xs;
-                fill: $color-br-gray-lt;
-            }
         }
     }
 }

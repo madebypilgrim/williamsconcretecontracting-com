@@ -15,10 +15,13 @@ $handle: "header";
     & > label {
         @include absolute($spacing-sm, $gutter-sm, auto, auto);
         z-index: 1;
-        color: $color-white;
         cursor: pointer;
 
-        @media (min-width: $screen-sm-min) {
+        @media (max-width: $screen-xs-max) {
+            color: $color-white;
+        }
+
+        @media (min-width: $screen-md-min) {
             display: none;
         }
 
@@ -29,45 +32,45 @@ $handle: "header";
     }
 
     & > nav {
-        @include full;
-        display: flex;
+        @include absolute(0, 0, auto, auto);
+        @include space($spacing-sm, $spacing-lg);
+        @include pad($gutter-sm);
 
-        @media (max-width: $screen-xs-max) {
-            @include fullOverlay;
+        @media (max-width: $screen-sm-max) {
+            @include span(5, "wide");
             @include space($spacing-lg);
-            @include pad($gutter-sm);
             flex-direction: column;
             justify-content: center;
             position: fixed;
             height: 100vh;
             transform: translateX(100%);
             background-color: $color-black;
-            color: $color-white;
+            color: $color-bg-dk-fg-lt;
             font-size: $spacing-sm;
             transition: transform $animate-sm;
         }
 
-        @media (min-width: $screen-sm-min) {
-            @include span(7, "wider");
-            @include space($spacing-sm, $spacing-lg);
-            @include pad($spacing-sm);
-            margin: 0 0 auto auto;
-            background: linear-gradient($color-white 25%, transparent);
+        @media (max-width: $screen-xs-max) {
+            left: 0;
+            width: 100%;
         }
 
         @media (min-width: $screen-md-min) {
             @include span(6, "wider");
+            display: flex;
+            margin: 0 0 auto auto;
+            background: linear-gradient($color-white 25%, transparent);
         }
 
         & > a {
-            @media (max-width: $screen-xs-max) {
+            @media (max-width: $screen-sm-max) {
                 @include listMargin($spacing-md);
                 display: block;
                 opacity: 0;
                 transform: translateY($spacing-md);
             }
 
-            @media (min-width: $screen-sm-min) {
+            @media (min-width: $screen-md-min) {
                 @include listMargin($spacing-sm, true);
             }
 
@@ -83,7 +86,7 @@ $handle: "header";
                 $animate: 0.5s ($i * 0.035s) ease-in-out;
 
                 &:nth-child(#{$i}) {
-                    @media (max-width: $screen-xs-max) {
+                    @media (max-width: $screen-sm-max) {
                         transition:
                             opacity $animate-lg,
                             transform $animate;
@@ -104,16 +107,20 @@ $handle: "header";
         transition: opacity $animate-lg, transform $animate-lg;
         pointer-events: none;
 
-        @media (min-width: $screen-sm-min) {
+        @media (min-width: $screen-md-min) {
             display: none;
         }
     }
 
     // Mobile nav active
     & > [type="checkbox"]:checked {
-        & + label > span {
-            &:first-child { display: none; }
-            &:last-child { display: block; }
+        & + label {
+            color: $color-white;
+
+            & > span {
+                &:first-child { display: none; }
+                &:last-child { display: block; }
+            }
         }
 
         & ~ nav {

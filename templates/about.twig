@@ -6,10 +6,39 @@
 {% extends '_layouts/main' %}
 
 {# Markup #}
+{% block left %}
+    {% include '_components/sticky-background' with {
+        image: entry.backgroundImage.one(),
+    } %}
+{% endblock %}
+
 {% block right %}
-  <article>
-    <header>
-      Hello, About!
-    </header>
-  </article>
+    <article>
+        <header>
+            {% include '_components/page-heading' with {
+                heading: entry.pageHeading,
+                subheading: entry.pageSubheading,
+            } %}
+        </header>
+
+        <section>
+            {% include '_components/order-list' with {
+                items: entry.orderedListItems.all(),
+            } %}
+        </section>
+
+        <section>
+            {#
+             # {% include '_components/unorder-list' with {
+             #     items: entry.orderedListItems.all(),
+             # } %}
+             #}
+        </section>
+
+        <section>
+            {% include '_components/next-ctas' with {
+                ctas: entry.nextCtas.all(),
+            } %}
+        </section>
+    </article>
 {% endblock %}

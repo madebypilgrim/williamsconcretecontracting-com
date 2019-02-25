@@ -15,8 +15,10 @@
         <ul>
             {% for item in items %}
                 <li>
-                    <em>{{ loop.index < 10 ? '0' }}{{ loop.index }}</em>
-                    <h2>{{ item.itemTitle }}</h2>
+                    <div>
+                        <em>{{ loop.index < 10 ? '0' }}{{ loop.index }}</em>
+                        <h2>{{ item.itemTitle }}</h2>
+                    </div>
                     <p>{{ item.itemBody }}</p>
                 </li>
             {% endfor %}

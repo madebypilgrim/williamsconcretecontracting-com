@@ -7,23 +7,27 @@ $handle: "ordered-list";
         & > li {
             @include space($spacing-sm, $spacing-md);
             border-top: 2px solid $color-br-gray-lt;
+            display: flex;
+            justify-content: space-between;
 
-            @media (min-width: $screen-md-min) {
-                display: flex;
-                justify-content: space-between;
-            }
+            & > div {
+                @media (min-width: $screen-md-min) {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                }
 
-            & > em {
-                font-size: $spacing-lg;
-                line-height: $spacing-lg;
-                color: $color-fg-gray-lt;
-            }
+                & > em {
+                    @include font("number");
+                    color: $color-bg-lt-fg-lt;
+                }
 
-            & > h2 {
-                @include font("heading-sm");
-                @include bold;
-                max-width: $max-width-sm;
-                margin-bottom: $spacing-xs;
+                & > h2 {
+                    @include font("heading-sm");
+                    width: 50%;
+                    max-width: $max-width-sm;
+                    margin-bottom: $spacing-xs;
+                }
             }
 
             & > p {
