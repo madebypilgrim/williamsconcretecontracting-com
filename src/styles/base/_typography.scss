@@ -30,6 +30,13 @@
         letter-spacing: -0.1px;
         color: $color-bg-lt-fg-dk;
     }
+    // Section heading
+    @if ($size == "heading-md") {
+        @include font-size-rem(2.0);
+        @include line-height-rem(3.2);
+        letter-spacing: -0.08px;
+        color: $color-bg-lt-fg-dk;
+    }
     // List headings
     @if ($size == "heading-sm") {
         @include font-size-rem(1.5);

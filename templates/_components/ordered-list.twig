@@ -1,9 +1,11 @@
 {##
  # Ordered list component
+ # @param {string} heading
  # @param {[]MatrixBlock} items
  #}
 
 {# Params #}
+{% set heading = heading|default([]) %}
 {% set items = items|default([]) %}
 
 {# Variables #}
@@ -12,16 +14,21 @@
 {# Markup #}
 {% if items is not empty %}
     <div class="{{ handle }}">
-        <ul>
+        {% if heading is not empty %}
+            <h2>{{ heading }}</h2>
+        {% endif %}
+        <ol>
             {% for item in items %}
                 <li>
-                    <div>
+                    <div class="{{ handle }}__heading-cont">
                         <em>{{ loop.index < 10 ? '0' }}{{ loop.index }}</em>
                         <h2>{{ item.itemTitle }}</h2>
                     </div>
-                    <p>{{ item.itemBody }}</p>
+                    <div class="{{ handle }}__body-cont">
+                        {{ item.itemBody }}
+                    </div>
                 </li>
             {% endfor %}
-        </ul>
+        </ol>
     </div>
 {% endif %}

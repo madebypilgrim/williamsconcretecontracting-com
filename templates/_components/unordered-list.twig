@@ -1,0 +1,35 @@
+{##
+ # Unordered list component
+ # @param {string} heading
+ # @param {[]MatrixBlock} items
+ # @param {string} type <overview*, detail>
+ #}
+
+{# Params #}
+{% set heading = heading|default([]) %}
+{% set items = items|default([]) %}
+
+{# Variables #}
+{% set handle = 'unordered-list' %}
+
+{# Markup #}
+{% if items is not empty %}
+    <div class="{{ handle }} {{ handle }}--{{ type }}">
+        {% if heading is not empty %}
+            <h2>{{ heading }}</h2>
+        {% endif %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <div class="{{ handle }}__heading-cont">
+                        <h2>{{ item.itemHeading }}</h2>
+                        <h4>{{ item.itemSubheading }}</h4>
+                    </div>
+                    <div class="{{ handle }}__body-cont">
+                        {{ item.itemBody }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

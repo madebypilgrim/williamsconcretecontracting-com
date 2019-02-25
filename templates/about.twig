@@ -22,17 +22,18 @@
         </header>
 
         <section>
-            {% include '_components/order-list' with {
+            {% include '_components/ordered-list' with {
+                heading: entry.orderedListHeading,
                 items: entry.orderedListItems.all(),
             } %}
         </section>
 
         <section>
-            {#
-             # {% include '_components/unorder-list' with {
-             #     items: entry.orderedListItems.all(),
-             # } %}
-             #}
+            {% include '_components/unordered-list' with {
+                heading: entry.listHeading,
+                items: entry.listItems.all(),
+                type: 'detail',
+            } %}
         </section>
 
         <section>

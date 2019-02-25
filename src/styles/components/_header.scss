@@ -2,14 +2,27 @@ $handle: "header";
 
 .#{$handle} {
     @include absolute(0, 0, auto, 0);
-    position: fixed;
     z-index: 10;
+
+    // Mobile background bar to ensure text contrast
+    &:before {
+        @media (max-width: $screen-xs-max) {
+            @include absolute(0, 0, auto, 0);
+            content: "";
+            height: $spacing-lg;
+            background: linear-gradient($color-bg-dk 0%, transparent);
+        }
+    }
 
     // Logo
     & > a {
         @include absolute($spacing-sm, auto, auto, $gutter-sm);
         z-index: 1;
         color: $color-white;
+
+        @media (min-width: $screen-sm-min) {
+            position: fixed;
+        }
     }
 
     & > label {
@@ -19,6 +32,10 @@ $handle: "header";
 
         @media (max-width: $screen-xs-max) {
             color: $color-white;
+        }
+
+        @media (min-width: $screen-sm-min) {
+            position: fixed;
         }
 
         @media (min-width: $screen-md-min) {
@@ -35,13 +52,14 @@ $handle: "header";
         @include absolute(0, 0, auto, auto);
         @include space($spacing-sm, $spacing-lg);
         @include pad($gutter-sm);
+        display: flex;
+        position: fixed;
 
         @media (max-width: $screen-sm-max) {
             @include span(5, "wide");
             @include space($spacing-lg);
             flex-direction: column;
             justify-content: center;
-            position: fixed;
             height: 100vh;
             transform: translateX(100%);
             background-color: $color-black;
@@ -57,7 +75,6 @@ $handle: "header";
 
         @media (min-width: $screen-md-min) {
             @include span(6, "wider");
-            display: flex;
             margin: 0 0 auto auto;
             background: linear-gradient($color-white 25%, transparent);
         }
