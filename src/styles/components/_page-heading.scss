@@ -1,9 +1,13 @@
 $handle: "page-heading";
 
 .#{$handle} {
-    @include space($spacing-xl, $spacing-lg);
+    @include space($spacing-md);
     @include pad($spacing-sm);
     max-width: $max-width-md;
+
+    @media (min-width: $screen-sm-min) {
+        @include space($spacing-xl, $spacing-lg);
+    }
 
     & > h1 {
         @include font("heading-lg");
@@ -11,6 +15,6 @@ $handle: "page-heading";
 
     & > p {
         @include font("body-lg");
-        margin-top: $spacing-xs;
+        margin-top: $spacing-sm;
     }
 }

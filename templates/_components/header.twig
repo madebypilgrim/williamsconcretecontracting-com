@@ -7,6 +7,15 @@
 
 {# Variables #}
 {% set handle = 'header' %}
+{% set activeClass = 'is-active' %}
+
+{% set links = [
+    { url: '', title: 'Overview' },
+    { url: 'services', title: 'Services' },
+    { url: 'projects', title: 'Projects' },
+    { url: 'about', title: 'About Us' },
+    { url: 'contact', title: 'Contact' },
+] %}
 
 {# Markup #}
 <div class="{{ handle }}">
@@ -19,11 +28,17 @@
         <span>Close</span>
     </label>
     <nav>
-        <a href="/" title="Overview">Overview</a>
-        <a href="/services" title="Services">Services</a>
-        <a href="/projects" title="Projects">Projects</a>
-        <a href="/about" title="About Us">About Us</a>
-        <a href="/contact" title="Contact">Contact</a>
+        {% for link in links %}
+            <a
+                href="{{ siteUrl(link.url) }}"
+                title="{{ link.title }}"
+                {% if link.url is not empty and link.url in craft.app.request.pathInfo %}
+                    class="{{ activeClass }}"
+                {% endif %}
+            >
+                {{ link.title }}
+            </a>
+        {% endfor %}
     </nav>
     <footer>
         Williams Concrete offers turn-key concrete packages to meet any commercial need.

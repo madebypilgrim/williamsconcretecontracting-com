@@ -5,16 +5,55 @@
 
 {% extends '_layouts/main' %}
 
+{% set featuredProjects = entry.featuredProjects.all() %}
+{% set pastProjects = craft
+    .entries
+    .section('projectsEntries')
+    .id('not ' ~ entry.featuredProjects.ids()|join(', '))
+    .all() %}
+
 {# Markup #}
 {% block left %}
+    {% include '_components/sticky-background' with {
+        image: entry.backgroundImage.one(),
+    } %}
 {% endblock %}
 
 {% block right %}
     <article>
         <header>
             {% include '_components/page-heading' with {
-                heading: 'Coming soon!',
+                heading: entry.pageHeading,
+                subheading: entry.pageSubheading,
             } %}
         </header>
+
+        {% set items = [] %}
+        {% for p in pastProjects %}
+            {% set subheading %}
+                {{ p.projectLocation }}
+                <br />
+                {{ p.projectYear }}
+            {% endset %}
+
+            {% set items = items|merge([{
+                itemHeading: p.projectName,
+                itemSubheading: subheading,
+                itemBody: p.projectTeaser,
+            }]) %}
+        {% endfor %}
+
+        <section>
+            {% include '_components/unordered-list' with {
+                heading: entry.pastProjectsHeading,
+                items: items,
+            } %}
+        </section>
+
+        <section>
+            {% include '_components/next-ctas' with {
+                ctas: entry.nextCtas.all(),
+            } %}
+        </section>
     </article>
 {% endblock %}

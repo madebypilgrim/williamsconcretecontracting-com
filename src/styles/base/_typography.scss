@@ -45,12 +45,12 @@
     }
     // Default text
     @if ($size == "body-md") {
-        @include font-size-rem(1.5);
+        @include font-size-rem(1.6);
         @include line-height-rem(2.2);
         color: $color-bg-lt-fg-md;
 
         @media (min-width: $screen-md-min) {
-            font-weight: $font-weight-lt;
+            // font-weight: $font-weight-lt;
         }
     }
     // Number

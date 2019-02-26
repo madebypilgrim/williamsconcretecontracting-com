@@ -56,9 +56,10 @@ $handle: "header";
         position: fixed;
 
         @media (max-width: $screen-sm-max) {
-            @include span(5, "wide");
+            @include span(5.5, "wide");
             @include space($spacing-lg);
             flex-direction: column;
+            align-items: flex-start;
             justify-content: center;
             height: 100vh;
             transform: translateX(100%);
@@ -80,8 +81,10 @@ $handle: "header";
         }
 
         & > a {
+            @include underlineLink;
+
             @media (max-width: $screen-sm-max) {
-                @include listMargin($spacing-md);
+                @include listMargin($spacing-sm);
                 display: block;
                 opacity: 0;
                 transform: translateY($spacing-md);

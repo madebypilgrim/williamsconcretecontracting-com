@@ -15,5 +15,24 @@
     }
 }
 
-@mixin unlineLink() {
+@mixin underlineLink($active-class: "is-active") {
+    @include tap-target;
+    display: inline-block;
+    position: relative;
+
+    &:after {
+        @include absolute(auto, 0, 0, 0);
+        content: "";
+        transform: scaleX(0);
+        height: 2px;
+        background-color: $color-br-gray-dk;
+        transition: transform $animate-sm;
+    }
+
+    &:hover,
+    &.#{$active-class} {
+        &:after {
+            transform: scaleX(1);
+        }
+    }
 }
