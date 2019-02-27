@@ -1,0 +1,72 @@
+{##
+ # Input component
+ # @param {string} type
+ # @param {bool} required
+ # @param {string} label
+ # @param {string} name
+ # @param {[]object} options
+ # @param {string} value
+ # @param {string} size <full*, half, third>
+ #}
+
+{# Params #}
+{% set type = type|default('text') %}
+{% set required = required is defined and required %}
+{% set label = label|default('') %}
+{% set name = name|default('') %}
+{% set options = options|default([]) %}
+{% set value = value|default('') %}
+{% set size = size|default('') %}
+
+{# Variables #}
+{% set handle = "input" %}
+
+{# Markup #}
+<div class="{{ handle }} {{ size }} {{ type }}">
+    <label for="{{ name }}">
+        {{ label }}
+    </label>
+
+    {% switch type %}
+    {% case 'select' %}
+        <select id="{{ name }}" name="{{ name }}" {{ required ? 'required' }}>
+            <option value="" disabled selected>{{ label }}</option>
+            {% for o in options %}
+                <option value="{{ o.value }}" {{ o.value == value ? 'selected' }}>
+                    {{ o.label }}
+                </option>
+            {% endfor %}
+        </select>
+    {% case 'checkbox' or 'radio' %}
+        {% for o in options %}
+            <label for="{{ name }}-{{ o.value }}">
+                <input
+                    type="{{ type }}"
+                    id="{{ name }}-{{ o.value }}"
+                    name="{{ name }}{{ type == 'checkbox' ? '[]' }}"
+                    value="{{ o.value }}"
+                    {{ o.value in value ? 'checked' }} />
+                {{ o.label }}
+            </label>
+        {% endfor %}
+    {% case 'textarea' %}
+        {% spaceless %}
+            <textarea
+                id="{{ name }}"
+                name="{{ name }}"
+                {{ required ? 'required' }}
+                {{ value|default(label) }}
+                placeholder="{{ label }}" />
+                {{ value }}
+            </textarea>
+        {% endspaceless %}
+    {% default %}
+        <input
+            type="{{ type }}"
+            id="{{ name }}"
+            name="{{ name }}"
+            value="{{ value }}"
+            {{ required ? 'required' }}
+            placeholder="{{ label }}" />
+    {% endswitch %}
+</div>

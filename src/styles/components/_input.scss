@@ -1,0 +1,45 @@
+$handle: "input";
+$input-height: $spacing-md;
+
+.#{$handle} {
+    position: relative;
+
+    & > label {
+        display: none; // Placeholders fine for none screen readers
+    }
+
+    // For checkbox and radio input labels
+    & > label + label {
+        display: inline-block;
+        margin-right: $spacing-xs;
+    }
+
+    & > select,
+    & > textarea,
+    & > input {
+        display: block;
+        width: 100%;
+        height: $input-height;
+        line-height: $input-height;
+        margin: 0;
+    }
+
+    & > input[type="checkbox"],
+    & > input[type="radio"] {
+        display: inline-block;
+        margin-right: $spacing-xs / 2;
+    }
+
+    & > select,
+    & > textarea,
+    & > input:not([type="range"]) {
+        padding: 0 $spacing-xs;
+        background-color: $color-br-gray-lt;
+    }
+
+    & > textarea {
+        @include font("body-md"); // Reset line height
+        min-height: $input-height * 4;
+        padding: $spacing-xs;
+    }
+}

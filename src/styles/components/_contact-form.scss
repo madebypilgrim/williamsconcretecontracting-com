@@ -1,0 +1,36 @@
+$handle: "contact-form";
+
+.#{$handle} {
+    @include pad($spacing-sm);
+    padding-bottom: $spacing-lg;
+
+    & > form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        & > * {
+            width: 100%;
+            margin-top: $spacing-sm;
+
+            &.half {
+                @media (min-width: $screen-md-min) {
+                    width: calc(50% - #{$spacing-xs});
+                }
+            }
+        }
+
+        & [type="submit"] {
+            @include arrowLink(true);
+            @include pad($spacing-xs);
+            justify-content: space-between;
+            position: relative;
+            width: auto;
+            min-width: $max-width-xs;
+            line-height: $spacing-md;
+            background-color: $color-black;
+            color: $color-white;
+            text-align: left;
+        }
+    }
+}

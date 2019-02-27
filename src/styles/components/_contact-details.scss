@@ -1,0 +1,60 @@
+$handle: "contact-details";
+
+.#{$handle} {
+    @include space($spacing-lg, $spacing-md);
+    @include pad($spacing-sm);
+    background-color: $color-black;
+
+    @media (min-width: $screen-sm-min) {
+        @include space($spacing-xl, $spacing-lg);
+        min-height: 100vh;
+    }
+
+    & > h2 {
+        @include font("heading-md");
+        @include space($spacing-sm, $spacing-md);
+        border-top: 2px solid $color-br-gray-lt;
+        color: $color-bg-dk-fg-lt;
+    }
+
+    & > img {
+        display: block;
+        width: 100%;
+        margin-bottom: $spacing-md;
+
+        @media (max-width: $screen-xs-max) {
+            display: none;
+        }
+    }
+
+    &__details-cont {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: $screen-sm-max) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__address-cont,
+    &__contact-cont,
+    &__hours-cont {
+        color: $color-bg-dk-fg-dk;
+
+        @media (max-width: $screen-sm-max) {
+            width: 50%;
+            margin-bottom: $spacing-sm;
+        }
+
+        & h3 {
+            margin-bottom: $spacing-xs / 2;
+            color: $color-bg-dk-fg-lt;
+        }
+    }
+
+    &__contact-cont {
+        @media (max-width: $screen-sm-max) {
+            order: 3;
+        }
+    }
+}

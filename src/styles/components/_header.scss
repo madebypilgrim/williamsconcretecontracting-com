@@ -96,7 +96,14 @@ $handle: "header";
 
             &:last-child {
                 @media (min-width: $screen-md-min) {
+                    @include arrowLink;
                     margin: auto 0 auto auto;
+                }
+
+                & > i {
+                    @media (max-width: $screen-sm-max) {
+                        display: none;
+                    }
                 }
             }
 

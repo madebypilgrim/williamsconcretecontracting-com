@@ -1,12 +1,16 @@
 $handle: "page-heading";
 
 .#{$handle} {
-    @include space($spacing-md);
+    @include space($spacing-xs * 3);
     @include pad($spacing-sm);
     max-width: $max-width-md;
 
     @media (min-width: $screen-sm-min) {
-        @include space($spacing-xl, $spacing-lg);
+        @include space($spacing-xl, $spacing-md);
+    }
+
+    @media (min-width: $screen-md-min) {
+        @include space($spacing-xl, $spacing-sm * 3);
     }
 
     & > h1 {

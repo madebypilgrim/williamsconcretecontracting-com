@@ -1,6 +1,7 @@
 @mixin arrowLink($background-inverted: true) {
+    @include tap-target;
     display: flex;
-    align-content: flex-start;
+    align-items: center;
 
     & > i {
         display: inline-block;

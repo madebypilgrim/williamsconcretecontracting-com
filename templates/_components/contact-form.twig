@@ -1,0 +1,70 @@
+{##
+ # Contact form component
+ #}
+
+{# Params #}
+
+{# Variables #}
+{% set handle = 'contact-form' %}
+
+{# Markup #}
+<div class="{{ handle }}">
+    <form method="post">
+        {{ csrfInput() }}
+
+        {% include '_components/input' with {
+            required: true,
+            label: 'First Name',
+            name: 'firstName',
+            size: 'half',
+        } %}
+
+        {% include '_components/input' with {
+            required: true,
+            label: 'Last Name',
+            name: 'lastName',
+            size: 'half',
+        } %}
+
+        {% include '_components/input' with {
+            type: 'email',
+            required: true,
+            label: 'Email Address',
+            name: 'emailAddress',
+            size: 'half',
+        } %}
+
+        {% include '_components/input' with {
+            type: 'tel',
+            required: true,
+            label: 'Phone Number',
+            name: 'phoneNumber',
+            size: 'half',
+        } %}
+
+        {% include '_components/input' with {
+            required: true,
+            label: 'Company Name',
+            name: 'companyName',
+        } %}
+
+        {% include '_components/input' with {
+            type: 'select',
+            required: true,
+            label: 'Your Budget',
+            name: 'yourBudget',
+        } %}
+
+        {% include '_components/input' with {
+            type: 'textarea',
+            required: true,
+            label: 'Breifly describe your project',
+            name: 'message',
+        } %}
+
+        <button type="submit" title="Submit Form">
+            Submit Form
+            {% include '_components/icon' with { icon: 'arrow-right' } %}
+        </button>
+    </form>
+</div>

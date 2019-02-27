@@ -44,6 +44,7 @@ hr {
 [type=submit],
 select,
 textarea {
+    @include font("body-md");
     appearance: none;
     margin: 0;
     padding: 0;

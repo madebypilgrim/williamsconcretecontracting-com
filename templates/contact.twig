@@ -7,14 +7,26 @@
 
 {# Markup #}
 {% block left %}
+    {% include '_components/contact-details' with {
+        heading: entry.contactHeading,
+        map: entry.contactMap.one(),
+        address: entry.contactAddress,
+        contact: entry.contactInfo,
+        hours: entry.contactHours,
+    } %}
 {% endblock %}
 
 {% block right %}
     <article>
         <header>
             {% include '_components/page-heading' with {
-                heading: 'Coming soon!',
+                heading: entry.pageHeading,
+                subheading: entry.pageSubheading,
             } %}
         </header>
+
+        <section>
+            {% include '_components/contact-form' %}
+        </section>
     </article>
 {% endblock %}

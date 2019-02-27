@@ -37,6 +37,9 @@
                 {% endif %}
             >
                 {{ link.title }}
+                {% if loop.last %}
+                    {% include '_components/icon' with { icon: 'arrow-right' } %}
+                {% endif %}
             </a>
         {% endfor %}
     </nav>
