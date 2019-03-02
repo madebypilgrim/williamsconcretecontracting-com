@@ -63,7 +63,7 @@ $handle: "header";
 
         @media (max-width: $screen-sm-max) {
             @include span(5.5, "wide");
-            @include space(0, $spacing-lg);
+            @include space($spacing-md, $spacing-lg);
             flex-direction: column;
             align-items: flex-start;
             justify-content: center;
