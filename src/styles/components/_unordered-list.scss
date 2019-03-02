@@ -5,8 +5,16 @@ $handle: "unordered-list";
 
     & > h2 {
         @include font("heading-md");
+        @include swipeIn;
         @include space($spacing-sm, $spacing-md);
-        border-top: 2px solid $color-br-gray-lt;
+        position: relative;
+
+        &:before {
+            @include absolute(0, 0, auto, 0);
+            content: "";
+            height: 2px;
+            background-color: $color-br-gray-lt;
+        }
     }
 
     & > ul {
@@ -15,6 +23,12 @@ $handle: "unordered-list";
             border-top: 2px solid $color-br-gray-lt;
             display: flex;
             justify-content: space-between;
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    @include fadeUp($i * $i * 0.035s);
+                }
+            }
         }
     }
 
@@ -23,11 +37,13 @@ $handle: "unordered-list";
 
         & > h2 {
             @include font("heading-sm");
+            @include fadeUp(150ms);
             margin-bottom: $spacing-xs / 2;
         }
 
         & > h4 {
             @include font("heading-sm");
+            @include fadeUp(50ms);
         }
 
         .#{$handle}--overview & {
@@ -46,6 +62,7 @@ $handle: "unordered-list";
     }
 
     &__body-cont {
+        @include fadeUp;
         padding-left: $spacing-sm;
 
         .#{$handle}--detail & {

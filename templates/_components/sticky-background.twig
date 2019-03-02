@@ -12,6 +12,8 @@
 {# Markup #}
 {% if image %}
     <div class="{{ handle }}">
-        {% include '_components/background-image' with { url: image.url } %}
+        <div class="{{ handle }}__image-cont">
+            {% include '_components/background-image' with { url: image.url } %}
+        </div>
     </div>
 {% endif %}

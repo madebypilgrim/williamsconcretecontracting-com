@@ -13,13 +13,19 @@ $handle: "overview-teasers";
             align-content: center;
         }
 
-        & > img {
-            display: block;
-            flex-basis: 70%;
-            width: 100%;
+        &__image-cont {
+            @include swipeIn;
+            position: relative;
+            overflow: hidden;
 
             @media (max-width: $screen-sm-max) {
                 margin-bottom: $spacing-md;
+            }
+
+            & > img {
+                @include scaleIn;
+                display: block;
+                width: 100%;
             }
         }
 
@@ -28,35 +34,40 @@ $handle: "overview-teasers";
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-                align-content: center;
+                align-content: flex-start;
             }
 
             & > em {
                 display: flex;
                 flex-direction: column;
-                flex-basis: 30%;
-                justify-content: center;
                 position: relative;
                 margin-right: $spacing-sm;
 
+                @media (max-width: $screen-sm-max) {
+                    width: calc(40% - #{$spacing-sm});
+                }
+
                 & > small {
-                    @include centerer(false, true);
-                    left: -$spacing-sm;
+                    @include swipeIn;
+                    left: -1em;
+                    bottom: -2.5em;
                     transform: rotate(270deg);
-                    text-align: right;
-                    width: $spacing-lg;
+                    width: $spacing-sm * 3;
+                    font-weight: $font-weight-bd;
+                    text-transform: uppercase;
                 }
 
                 & > strong {
-                    font-size: $spacing-lg;
-                    line-height: $spacing-lg;
+                    @include swipeIn;
+                    @include font("number");
                     padding-left: $spacing-xs * 3;
                 }
             }
 
-            & > img {
-                flex-basis: unset;
-                width: inherit;
+            & > div:nth-of-type(1) {
+                @media (max-width: $screen-sm-max) {
+                    width: 60%;
+                }
 
                 @media (min-width: $screen-md-min) {
                     order: 3;
@@ -72,14 +83,17 @@ $handle: "overview-teasers";
 
             @media (min-width: $screen-md-min) {
                 @include pad($spacing-sm);
+                max-width: $max-width-xs;
             }
 
             & > h2 {
+                @include fadeUp;
                 max-width: $max-width-sm;
             }
 
             & > a {
                 @include arrowLink;
+                @include swipeIn;
                 margin-top: $spacing-sm;
             }
         }

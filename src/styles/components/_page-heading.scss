@@ -15,10 +15,13 @@ $handle: "page-heading";
 
     & > h1 {
         @include font("heading-lg");
+        @include swipeIn;
+        position: relative;
     }
 
     & > p {
         @include font("body-lg");
+        @include fadeUp;
         margin-top: $spacing-sm;
     }
 }

@@ -6,7 +6,15 @@ $handle: "ordered-list";
     & > h2 {
         @include font("heading-md");
         @include space($spacing-sm, $spacing-md);
-        border-top: 2px solid $color-br-gray-lt;
+        @include swipeIn;
+        position: relative;
+
+        &:before {
+            @include absolute(0, 0, auto, 0);
+            content: "";
+            height: 2px;
+            background-color: $color-br-gray-lt;
+        }
     }
 
     & > ol {
@@ -15,6 +23,12 @@ $handle: "ordered-list";
             border-top: 2px solid $color-br-gray-lt;
             display: flex;
             justify-content: space-between;
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    @include fadeUp($i * $i * 0.035s);
+                }
+            }
         }
     }
 
@@ -31,6 +45,7 @@ $handle: "ordered-list";
 
         & > em {
             @include font("number");
+            @include swipeIn;
             color: $color-bg-lt-fg-lt;
 
             @media (max-width: $screen-sm-max) {
@@ -44,6 +59,7 @@ $handle: "ordered-list";
         }
 
         & > h2 {
+            @include fadeUp(150ms);
             @include font("heading-sm");
             max-width: $max-width-sm;
             margin-bottom: $spacing-xs;
@@ -51,6 +67,7 @@ $handle: "ordered-list";
     }
 
     &__body-cont {
+        @include fadeUp(50ms);
         max-width: $max-width-sm;
         padding-left: $spacing-sm;
     }

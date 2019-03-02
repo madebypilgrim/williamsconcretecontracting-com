@@ -4,6 +4,8 @@
  # @block {string} right
  #}
 
+{% import '_macros/components' as components %}
+
 {# Params #}
 {% set left %}
   {% block left %}{% endblock %}
@@ -26,11 +28,11 @@
   </head>
 
   <body data-no-js="true">
-    {# Set global components and state #}
     <script type="text/javascript">
       document.body.setAttribute('data-no-js', false);
-      window[{{ constant('SITE_HANDLE')|json_encode|raw }}] = { components: [], state: {} };
     </script>
+
+    {{ components.scaffold() }}
 
     <header>
       {% include '_components/header' %}

@@ -1,8 +1,9 @@
 $handle: "sticky-background";
 
 .#{$handle} {
-    position: relative;
     align-self: flex-start;
+    position: relative;
+    overflow: hidden;
     width: 100%;
     height: 60vh;
 
@@ -10,5 +11,11 @@ $handle: "sticky-background";
         position: sticky;
         top: 0;
         height: 100vh;
+    }
+
+    &__image-cont {
+        @include fullOverlay;
+        @include swipeIn;
+        @include scaleIn;
     }
 }

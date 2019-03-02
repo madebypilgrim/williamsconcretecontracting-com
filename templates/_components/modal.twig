@@ -2,6 +2,8 @@
  # Modal component
  #}
 
+{% import '_macros/components' as components %}
+
 {# Globals #}
 {% set modalFull = modalFull|default('false') %}
 {% set modalPosition = modalPosition|default('center') %}
@@ -17,33 +19,26 @@
 
 {# Markup #}
 <div
-  id="{{ id }}"
-  class="{{ handle }}"
-  data-full="{{ modalFull }}"
-  data-position="{{ modalPosition }}"
-  data-size="{{ modalSize }}">
-  <div class="{{ overlayHandle }}"></div>
-  <div class="{{ handle }}__content-cont">
-    <div class="{{ handle }}__close-cont">
-      <button type="button" title="Close" class="{{ closeHandle }}">
-        {% include '_components/icon' with { icon: 'x' } %}
-      </button>
+    id="{{ id }}"
+    class="{{ handle }}"
+    data-full="{{ modalFull }}"
+    data-position="{{ modalPosition }}"
+    data-size="{{ modalSize }}">
+    <div class="{{ overlayHandle }}"></div>
+    <div class="{{ handle }}__content-cont">
+        <div class="{{ handle }}__close-cont">
+            <button type="button" title="Close" class="{{ closeHandle }}">
+                {% include '_components/icon' with { icon: 'x' } %}
+            </button>
+        </div>
+        <div class="{{ contentHandle }}"></div>
     </div>
-    <div class="{{ contentHandle }}"></div>
-  </div>
 
-  {# Instantiate JS component class #}
-  {% set jsConfig = {
-    handle: handle,
-    id: id,
-    overlayHandle: '.' ~ overlayHandle,
-    contentHandle: '.' ~ contentHandle,
-    closeHandle: '.' ~ closeHandle,
-    activeClass: activeClass,
-  } %}
-
-  <script type="text/javascript">
-    window[{{ constant('SITE_HANDLE')|json_encode|raw }}].components.push({{ jsConfig|json_encode|raw }});
-  </script>
+    {{ components.new(handle, {
+        id: id,
+        overlayHandle: '.' ~ overlayHandle,
+        contentHandle: '.' ~ contentHandle,
+        closeHandle: '.' ~ closeHandle,
+        activeClass: activeClass,
+    }) }}
 </div>
-

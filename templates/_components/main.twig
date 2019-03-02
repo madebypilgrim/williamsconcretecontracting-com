@@ -4,6 +4,8 @@
  # @param {string} right
  #}
 
+{% import '_macros/components' as components %}
+
 {# Params #}
 {% set left = left|default('') %}
 {% set right = right|default('') %}
@@ -11,8 +13,8 @@
 {# Variables #}
 {% set handle = 'main' %}
 {% set id = craft.utilities.uniqueId() %}
-{% set activeClass = 'is-active' %}
 {% set lockedClass = 'is-locked' %}
+{% set loadingClass = 'is-loading' %}
 {% set unloadingClass = 'is-unloading' %}
 
 {# Markup #}
@@ -39,17 +41,11 @@
         </div>
     </div>
 
-    {# Instantiate JS component class #}
-    {% set jsConfig = {
-        handle: handle,
+    {{ components.new(handle, {
         id: id,
-        activeClass: activeClass,
         lockedClass: lockedClass,
+        loadingClass: loadingClass,
         unloadingClass: unloadingClass,
-    } %}
-
-    <script type="text/javascript">
-        window[{{ constant('SITE_HANDLE')|json_encode|raw }}].components.push({{ jsConfig|json_encode|raw }});
-    </script>
+    }) }}
 </div>
 

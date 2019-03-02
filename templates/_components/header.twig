@@ -20,7 +20,7 @@
 {# Markup #}
 <div class="{{ handle }}">
     <a href="/" title="Home">
-        LOGO
+        {% include '_components/icon' with { icon: 'logo' } %}
     </a>
     <input type="checkbox" id="nav-toggle" style="display:none" />
     <label for="nav-toggle">

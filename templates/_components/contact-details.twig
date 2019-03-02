@@ -22,9 +22,11 @@
     {% if heading is not empty %}
         <h2>{{ heading }}</h2>
     {% endif %}
-    {% if map %}
-        <img src="{{ map.url }}" alt="Arial map of Charlotte" />
-    {% endif %}
+    <div class="{{ handle }}__map-cont">
+        {% if map %}
+            <img src="{{ map.url }}" alt="Arial map of Charlotte" />
+        {% endif %}
+    </div>
     <div class="{{ handle }}__details-cont">
         <div class="{{ handle }}__address-cont">
             <address>

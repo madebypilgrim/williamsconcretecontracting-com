@@ -1,72 +1,53 @@
-/**
- * Animations
- */
+$loading-class: "is-loading";
+$unloading-class: "is-unloading";
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@mixin scaleIn() {
+    transform: scale(1.25);
+    transition: transform $animate-xl;
+
+    body.#{$loading-class} & {
+        transform: scale(1);
+    }
+
+    body.#{$unloading-class} & {
+        transform: scale(1.25);
+    }
 }
 
-@keyframes from-left {
-  from { transform: translate(-$spacing-md, $spacing-xs); }
-  to { transform: translate(0, 0); }
+@mixin swipeIn($invert: false) {
+    position: relative;
+
+    &:after {
+        @include fullOverlay;
+        content: "";
+        transform-origin: right;
+        transform: scaleX(1);
+        transition: transform $animate-md;
+        background-color: if($invert, $color-black, $color-white);
+
+        body.#{$loading-class} & {
+            transform: scaleX(0);
+        }
+
+        body.#{$unloading-class} & {
+            transform: scaleX(1);
+        }
+    }
 }
 
-@keyframes from-right {
-  from { transform: translate($spacing-md, $spacing-xs); }
-  to { transform: translate(0, 0); }
+@mixin fadeUp($delay: 0) {
+    opacity: 0;
+    transform: translateY($spacing-xs);
+    transition: opacity $animate-lg, transform $animate-md;
+    transition-delay: $delay;
+
+    body.#{$loading-class} & {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    body.#{$unloading-class} & {
+        opacity: 0;
+        transform: translateY($spacing-xs);
+    }
 }
-
-@keyframes from-bottom {
-  from { transform: translateY($spacing-md); }
-  to { transform: translateY(0); }
-}
-
-@keyframes scale-in {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
-}
-
-/**
- * Spy mixins
- */
-
-@mixin spy($in-view-class: "in-view") {
-  opacity: 0;
-  transition: opacity $animate-md;
-
-  &.#{$in-view-class} {
-    opacity: 1;
-  }
-}
-
-@mixin fadeIn($handle, $in-view-class: "in-view") {
-  .#{$handle}.#{$in-view-class} & {
-    animation: fade-in $animate-sm;
-  }
-}
-
-@mixin fromLeft($handle, $in-view-class: "in-view") {
-  .#{$handle}.#{$in-view-class} & {
-    animation: from-left $animate-md;
-  }
-}
-
-@mixin fromRight($handle, $in-view-class: "in-view") {
-  .#{$handle}.#{$in-view-class} & {
-    animation: from-right $animate-md;
-  }
-}
-
-@mixin fromBottom($handle, $in-view-class: "in-view") {
-  .#{$handle}.#{$in-view-class} & {
-    animation: from-bottom $animate-md;
-  }
-}
-
-@mixin scaleIn($handle, $in-view-class: "in-view") {
-  .#{$handle}.#{$in-view-class} & {
-    animation: draw-down $animate-md;
-  }
-}
-

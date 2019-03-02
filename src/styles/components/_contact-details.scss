@@ -12,18 +12,33 @@ $handle: "contact-details";
 
     & > h2 {
         @include font("heading-md");
+        @include swipeIn(true);
         @include space($spacing-sm, $spacing-md);
-        border-top: 2px solid $color-br-gray-lt;
+        position: relative;
         color: $color-bg-dk-fg-lt;
+
+        &:before {
+            @include absolute(0, 0, auto, 0);
+            content: "";
+            height: 2px;
+            background-color: $color-br-gray-lt;
+        }
     }
 
-    & > img {
-        display: block;
-        width: 100%;
+    &__map-cont {
+        @include swipeIn(true);
+        position: relative;
+        overflow: hidden;
         margin-bottom: $spacing-md;
 
         @media (max-width: $screen-xs-max) {
             display: none;
+        }
+
+        & > img {
+            @include scaleIn;
+            display: block;
+            width: 100%;
         }
     }
 
@@ -49,6 +64,12 @@ $handle: "contact-details";
         & h3 {
             margin-bottom: $spacing-xs / 2;
             color: $color-bg-dk-fg-lt;
+        }
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                @include fadeUp($i * $i * 0.035s);
+            }
         }
     }
 

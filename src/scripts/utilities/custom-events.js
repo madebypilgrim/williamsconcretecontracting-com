@@ -2,8 +2,6 @@ export const events = {
   // Action events
   lockScroll: 'lock-scroll',
   unlockScroll: 'unlock-scroll',
-  loadRoute: 'load-route',
-  unloadRoute: 'unload-route',
   showHeader: 'show-header',
   hideHeader: 'hide-header',
   openModal: 'open-modal',

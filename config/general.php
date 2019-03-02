@@ -36,8 +36,7 @@ return [
     'dev' => [
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
-        'siteUrl' => 'http://' . SITE_HANDLE . '.localhost',
-        // 'siteUrl' => 'http://10.0.2.2', // For testing IE in VirtualBox
+        'siteUrl' => 'http://williamsconcretecontracting.localhost',
         'userSessionDuration' => false,
     ],
 
@@ -45,7 +44,7 @@ return [
     'staging' => [
         // Prevent administrative changes from being made on staging
         'allowAdminChanges' => false,
-        'siteUrl' => 'https://staging.' . SITE_HANDLE . '.com',
+        'siteUrl' => 'https://staging.williamsconcretecontracting.com',
         'userSessionDuration' => false,
     ],
 
@@ -53,6 +52,6 @@ return [
     'production' => [
         // Prevent administrative changes from being made on staging
         'allowAdminChanges' => false,
-        'siteUrl' => 'https://' . SITE_HANDLE . '.com',
+        'siteUrl' => 'https://williamsconcretecontracting.com',
     ],
 ];

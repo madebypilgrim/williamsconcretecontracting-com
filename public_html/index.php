@@ -4,7 +4,6 @@
  */
 
 // Custom constants
-define('SITE_HANDLE', 'williamsconcretecontracting');
 define('DEV_EMAIL', getenv('DEV_EMAIL'));
 define('CRAFT_CACHE', getenv('CRAFT_CACHE'));
 define('HONEYPOT_HANDLE', 'liquid_gold');

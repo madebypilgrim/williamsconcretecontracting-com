@@ -8,15 +8,17 @@ export default class {
   constructor({
     id,
     lockedClass,
-    activeClass,
+    loadingClass,
     unloadingClass,
   }) {
     // Elements and class variables
     const el = document.getElementById(id);
-
-    // State variables
-    let animating = false;
-    let scrolling = false;
+    const links = Array.from(document.querySelectorAll('a'))
+      .filter(l => (
+        !l.href.startsWith('tel:')
+        && !l.href.startsWith('mailto:')
+        && (l.getAttribute('target') || 'self') === 'self'
+      ))
 
     // Event handler functions
     function handleLockScroll(e) {
@@ -25,37 +27,28 @@ export default class {
     function handleUnlockScroll() {
       document.body.classList.remove(lockedClass);
     }
-    function handleUnloadRoute() {
-      function scroll() {
-        scrolling = true;
+    function handleLink(e) {
+      e.preventDefault();
 
+      const link = e.currentTarget;
+
+      function scroll() {
         scrollTop(document.body, 0, () => {
-          scrolling = false;
+          window.location = link.href;
         });
       }
 
-      function animate() {
-        animating = true;
-
-        setTimeout(() => {
-          animating = false;
-
-          scroll();
-        }, ANIMATION_DURATION);
-      }
-
       // Animate page unload
-      el.classList.add(unloadingClass);
-      animate();
+      document.body.classList.add(unloadingClass);
+      setTimeout(scroll, ANIMATION_DURATION);
     }
 
     // Add event listeners
     window.addEventListener(events.lockScroll, handleLockScroll);
     window.addEventListener(events.unlockScroll, handleUnlockScroll);
-    window.addEventListener(events.unloadRoute, handleUnloadRoute);
+    links.forEach(l => { l.addEventListener('click', handleLink); });
 
-    // Initialize
-    el.classList.add(activeClass);
+    // Animate page load
+    document.body.classList.add(loadingClass);
   }
 }
-

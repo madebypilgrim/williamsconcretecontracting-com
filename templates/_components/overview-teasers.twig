@@ -28,9 +28,11 @@
                     {% endif %}
                 {% endif %}
 
-                {% if image %}
-                    <img src="{{ image.url }}" alt="{{ image.title }}" />
-                {% endif %}
+                <div class="{{ handle }}__teaser-cont__image-cont">
+                    {% if image %}
+                        <img src="{{ image.url }}" alt="{{ image.title }}" />
+                    {% endif %}
+                </div>
                 <div class="{{ handle }}__teaser-cont__text-cont">
                     <h2>{{ teaser.teaserCopy }}</h2>
                     {% if cta %}

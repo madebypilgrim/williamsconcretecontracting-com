@@ -5,6 +5,7 @@ $handle: "contact-form";
     padding-bottom: $spacing-lg;
 
     & > form {
+        @include fadeUp;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

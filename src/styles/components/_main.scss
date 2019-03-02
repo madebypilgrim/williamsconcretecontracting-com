@@ -1,6 +1,4 @@
 $handle: "main";
-$active-class: "is-active";
-$unloading-class: "is-unloading";
 
 .#{$handle} {
     position: relative;
@@ -48,16 +46,6 @@ $unloading-class: "is-unloading";
     &__main-cont {
         @include container;
         position: relative;
-        opacity: 0;
-        transition: opacity $animate-lg;
-
-        .#{$handle}.#{$active-class} & {
-            opacity: 1;
-        }
-
-        .#{$handle}.#{$unloading-class} & {
-            opacity: 0;
-        }
 
         &__left-cont {
             @include full;
