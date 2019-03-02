@@ -49,6 +49,9 @@ export default class {
     links.forEach(l => { l.addEventListener('click', handleLink); });
 
     // Animate page load
-    document.body.classList.add(loadingClass);
+    // This needs to fire on delay to make sure initial state is rendered in browsers
+    setTimeout(() => {
+      document.body.classList.add(loadingClass);
+    }, 300);
   }
 }
