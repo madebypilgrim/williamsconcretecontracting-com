@@ -29,10 +29,15 @@
     </label>
     <nav>
         {% for link in links %}
+            {% set isActive = link.url in craft.app.request.pathInfo %}
+            {% if link.url is empty and craft.app.request.pathInfo is not empty %}
+                {% set isActive = false %}
+            {% endif %}
+
             <a
                 href="{{ siteUrl(link.url) }}"
                 title="{{ link.title }}"
-                {% if link.url is not empty and link.url in craft.app.request.pathInfo %}
+                {% if isActive %}
                     class="{{ activeClass }}"
                 {% endif %}
             >

@@ -1,6 +1,7 @@
 $handle: "contact-details";
 
 .#{$handle} {
+    @include fadeIn;
     @include space($spacing-lg, $spacing-md);
     @include pad($spacing-sm);
     background-color: $color-black;

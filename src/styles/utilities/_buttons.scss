@@ -35,7 +35,15 @@
     &:hover,
     &.#{$active-class} {
         &:after {
-            transform: scaleX(1);
+            body.#{$loading-class} & {
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    body.#{$unloading-class} & {
+        &:after {
+            transform: scaleX(0) !important;
         }
     }
 }

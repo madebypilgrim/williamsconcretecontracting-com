@@ -9,7 +9,6 @@ $handle: "overview-teasers";
 
         @media (min-width: $screen-md-min) {
             display: flex;
-            justify-content: space-between;
             align-content: center;
         }
 
@@ -49,7 +48,7 @@ $handle: "overview-teasers";
 
                 & > small {
                     @include swipeIn;
-                    left: -1em;
+                    left: -2em;
                     bottom: -2.5em;
                     transform: rotate(270deg);
                     width: $spacing-sm * 3;
@@ -60,7 +59,7 @@ $handle: "overview-teasers";
                 & > strong {
                     @include swipeIn;
                     @include font("number");
-                    padding-left: $spacing-xs * 3;
+                    padding-left: $spacing-xs * 1.5;
                 }
             }
 

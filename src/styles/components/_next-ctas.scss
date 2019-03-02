@@ -10,6 +10,7 @@ $handle: "next-ctas";
     }
 
     &__cta-cont {
+        @include fadeUp;
         display: flex;
         flex-direction: column;
         flex-basis: 50%;
@@ -26,10 +27,12 @@ $handle: "next-ctas";
         }
 
         & > h3 {
+            @include swipeIn(true);
             @include font("body-lg");
         }
 
         & > a {
+            @include swipeIn(true);
             @include arrowLink(true);
             margin-top: $spacing-lg;
         }

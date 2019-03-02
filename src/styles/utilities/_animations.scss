@@ -35,6 +35,19 @@ $unloading-class: "is-unloading";
     }
 }
 
+@mixin fadeIn() {
+    opacity: 0;
+    transition: opacity $animate-sm;
+
+    body.#{$loading-class} & {
+        opacity: 1;
+    }
+
+    body.#{$unloading-class} & {
+        opacity: 0;
+    }
+}
+
 @mixin fadeUp($delay: 0) {
     opacity: 0;
     transform: translateY($spacing-xs);
