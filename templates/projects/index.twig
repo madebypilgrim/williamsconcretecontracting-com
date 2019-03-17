@@ -3,8 +3,7 @@
  # @param {Entry} entry
  #}
 
-{% extends '_layouts/main' %}
-
+{# Variables #}
 {% set featuredProjects = entry.featuredProjects.all() %}
 {% set pastProjects = craft
     .entries
@@ -13,6 +12,8 @@
     .all() %}
 
 {# Markup #}
+{% extends '_layouts/main' %}
+
 {% block left %}
     {% include '_components/sticky-background' with {
         image: entry.backgroundImage.one(),

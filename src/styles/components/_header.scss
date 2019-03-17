@@ -25,9 +25,9 @@ $handle: "header";
         }
 
         & > i {
-            width: $spacing-lg;
-            height: $spacing-md;
-            fill: $color-white;
+            width: $spacing-xl;
+            height: $spacing-sm * 3;
+            fill: $color-black;
         }
     }
 

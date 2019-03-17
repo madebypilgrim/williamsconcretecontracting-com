@@ -1,12 +1,13 @@
 {
   "require": {
-    "craftcms/cms": "3.1.12",
-    "craftcms/redactor": "2.3.1",
-    "verbb/super-table": "2.1.8",
+    "craftcms/cms": "3.1.18",
+    "craftcms/redactor": "2.3.2",
+    "verbb/super-table": "2.1.16",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {
     "psr-4": {
+      "modules\\forms\\": "modules/forms/src/",
       "modules\\utilities\\": "modules/utilities/src/"
     }
   },

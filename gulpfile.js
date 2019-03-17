@@ -7,7 +7,7 @@
  *
  * Require packages
  */
-var gulp = require('gulp'),
+const gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   babel = require('babelify'),
   browserify = require('browserify'),
@@ -15,8 +15,11 @@ var gulp = require('gulp'),
   cheerio = require('gulp-cheerio'),
   del = require('del'),
   eslint = require('gulp-eslint'),
+  env = require('dotenv'),
   htmlhint = require('gulp-htmlhint'),
   imagemin = require('gulp-imagemin'),
+  livereload = require('gulp-livereload'),
+  lr = require('tiny-lr'),
   minify = require('gulp-clean-css'),
   replace = require('gulp-replace'),
   sass = require('gulp-sass'),
@@ -26,51 +29,54 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   watchify = require('watchify');
 
-var livereload = require('gulp-livereload'),
-  lr = require('tiny-lr'),
-  server = lr();
+const server = lr();
 
 /**
- * WEBROOT
+ * ENV
+ *
+ * Set user environment variables.
+ * Require statements need to be declared before this setting.
  */
-var webroot = 'public_html';
+env.config();
+
+/**
+ * ROOTS
+ */
+const srcroot = 'src';
+const dstroot = process.env.WEB_PATH;
 
 /**
  * CONFIG
  *
  * Create variables
  */
-var config = {
+const config = {
   fonts: {
-    src: './src/fonts/',
-    dst: './' + webroot + '/fonts/',
+    src: './' + srcroot + '/fonts/',
+    dst: './' + dstroot + '/fonts/',
   },
 
   images: {
-    src: './src/images/',
-    dst: './' + webroot + '/images/',
+    src: './' + srcroot + '/images/',
+    dst: './' + dstroot + '/images/',
   },
 
   markup: {
-    src: './' + webroot + '/',
-  },
-
-  scripts: {
-    entry: './src/scripts/index.js',
-    src: './src/scripts/**/*.js',
-    dst: './' + webroot + '/scripts/',
-    test: './tests/**/*.spec.js',
+    entry: './templates/_layout.twig',
+    src: './templates/',
+    dst: './templates/',
   },
 
   styles: {
-    entry: './src/styles/index.scss',
-    src: './src/styles/**/*.scss',
-    dst: './' + webroot + '/styles/',
+    entry: './' + srcroot + '/styles/index.scss',
+    src: './' + srcroot + '/styles/**/*.scss',
+    dst: './' + dstroot + '/styles/',
   },
 
-  twig: {
-    entry: './craft/templates/_layout.twig',
-    dst: './craft/templates/',
+  scripts: {
+    entry: './' + srcroot + '/scripts/index.js',
+    src: './' + srcroot + '/scripts/**/*.js',
+    dst: './' + dstroot + '/scripts/',
   },
 };
 
@@ -79,16 +85,16 @@ var config = {
  *
  * Individual clean tasks
  */
-gulp.task('clean:fonts', function(cb) {
+gulp.task('clean:fonts', cb => {
   del([config.fonts.dst], cb);
 });
-gulp.task('clean:images', function(cb) {
+gulp.task('clean:images', cb => {
   del([config.images.dst], cb);
 });
-gulp.task('clean:scripts', function(cb) {
+gulp.task('clean:scripts', cb => {
   del([config.scripts.dst], cb);
 });
-gulp.task('clean:styles', function(cb) {
+gulp.task('clean:styles', cb => {
   del([config.styles.dst], cb);
 });
 
@@ -97,30 +103,30 @@ gulp.task('clean:styles', function(cb) {
  *
  * Copy raster fonts to dist (no processing)
  */
-gulp.task('fonts:passthrough', function() {
-  return gulp.src([
-      config.fonts.src + '**/*.eot',
-      config.fonts.src + '**/*.ttf',
-      config.fonts.src + '**/*.woff',
-      config.fonts.src + '**/*.woff2',
-    ])
-    .pipe(gulp.dest(config.fonts.dst));
-});
+gulp.task('fonts:passthrough', () => gulp
+  .src([
+    config.fonts.src + '**/*.eot',
+    config.fonts.src + '**/*.ttf',
+    config.fonts.src + '**/*.woff',
+    config.fonts.src + '**/*.woff2',
+  ])
+  .pipe(gulp.dest(config.fonts.dst))
+);
 
 /**
  * HTMLHINT
  *
  * Check HTML for closing tags etc
  */
-gulp.task('htmlhint', function() {
-  return gulp.src([
-      config.markup.src + '*.html',
-      config.markup.src + '*.php',
-      config.markup.src + '*.twig',
-    ])
-    .pipe(htmlhint('.htmlhintrc'))
-    .pipe(htmlhint.failReporter());
-});
+gulp.task('htmlhint', () => gulp
+  .src([
+    config.markup.src + '*.html',
+    config.markup.src + '*.php',
+    config.markup.src + '*.twig',
+  ])
+  .pipe(htmlhint('.htmlhintrc'))
+  .pipe(htmlhint.failReporter())
+);
 
 /**
  * IMAGES:RASTER
@@ -129,54 +135,54 @@ gulp.task('htmlhint', function() {
  * Use ImageOptim (lossless) on your source images.
  * We do want images to be progressive and interlaced, though.
  */
-gulp.task('images:raster', function() {
-  return gulp.src([
-      config.images.src + '**/*.gif',
-      config.images.src + '**/*.jpg',
-      config.images.src + '**/*.png',
-      config.images.src + '**/*.svg',
-      config.images.src + '**/*.ico',
-    ])
-    .pipe(imagemin({
-      optimizationLevel: 0,
-      progressive: true,
-      interlaced: true,
-    }))
-    .pipe(gulp.dest(config.images.dst));
-});
+gulp.task('images:raster', () => gulp
+  .src([
+    config.images.src + '**/*.gif',
+    config.images.src + '**/*.jpg',
+    config.images.src + '**/*.png',
+    config.images.src + '**/*.svg',
+    config.images.src + '**/*.ico',
+  ])
+  .pipe(imagemin({
+    optimizationLevel: 0,
+    progressive: true,
+    interlaced: true,
+  }))
+  .pipe(gulp.dest(config.images.dst))
+);
 
 /**
  * IMAGES:VECTOR:SPRITES
  *
  * Combine all svgs in target directory into a single spritemap.
  */
-gulp.task('images:vector:sprites', function() {
-  return gulp.src([
-      config.images.src + 'sprites/*.svg'
-    ])
-    .pipe(svgstore({ inlineSvg: true }))
-    .pipe(cheerio({
-      run: function($) {
-        $('svg').attr('style', 'display:none'); // make sure the spritemap doesn't show
-        $('[fill]').removeAttr('fill'); // remove all 'fill' attributes in order to control via CSS
-      },
-      parserOptions: { lowerCaseAttributeNames: false },
-    }))
-    .on('error', function(err) { displayError(err); })
-    .pipe(gulp.dest(config.images.dst + 'sprites/'));
-});
+gulp.task('images:vector:sprites', () => gulp
+  .src([
+    config.images.src + 'sprites/*.svg'
+  ])
+  .pipe(svgstore({ inlineSvg: true }))
+  .pipe(cheerio({
+    run: $ => {
+      $('svg').attr('style', 'display:none'); // make sure the spritemap doesn't show
+      $('[fill]').removeAttr('fill'); // remove all 'fill' attributes in order to control via CSS
+    },
+    parserOptions: { lowerCaseAttributeNames: false },
+  }))
+  .on('error', err => { displayError(err); })
+  .pipe(gulp.dest(config.images.dst + 'sprites/'))
+);
 
 /**
  * IMAGES:VECTOR:PASSTHROUGH
  *
  * Regardless of other processing, at least copy all vectors to dist
  */
-gulp.task('images:vector:passthrough', function() {
-  return gulp.src([
-      config.images.src + '**/*.svg'
-    ])
-    .pipe(gulp.dest(config.images.dst));
-});
+gulp.task('images:vector:passthrough', () => gulp
+  .src([
+    config.images.src + '**/*.svg'
+  ])
+  .pipe(gulp.dest(config.images.dst))
+);
 
 /**
  * SCRIPTS:LINT
@@ -184,9 +190,9 @@ gulp.task('images:vector:passthrough', function() {
  * Lint scripts using .eslintrc
  */
 function lintJs() {
-  return gulp.src([
+  return gulp
+    .src([
       config.scripts.src,
-      config.scripts.test
     ])
     .pipe(eslint())
     .pipe(eslint.format());
@@ -198,11 +204,11 @@ gulp.task('scripts:lint', lintJs);
  *
  * Transpile and bundle JS
  */
-gulp.task('scripts:browserify', function() {
-  var bundler = browserify(config.scripts.entry).transform(babel);
+gulp.task('scripts:browserify', () => {
+  const bundler = browserify(config.scripts.entry).transform(babel);
 
   return bundler.bundle()
-    .on('error', function(err) {
+    .on('error', err => {
       console.error(err);
       this.emit('end');
     })
@@ -217,9 +223,8 @@ gulp.task('scripts:browserify', function() {
  *
  * Watch JS for changes
  */
-gulp.task('scripts:watchify', function() {
-  watchify.args.debug = true;
-  var bundler = watchify(browserify(config.scripts.entry, watchify.args).transform(babel));
+gulp.task('scripts:watchify', () => {
+  const bundler = watchify(browserify(config.scripts.entry, { debug: true }).transform(babel));
 
   bundler.on('update', rebundle);
 
@@ -227,7 +232,7 @@ gulp.task('scripts:watchify', function() {
     lintJs();
 
     return bundler.bundle()
-      .on('error', function(err) {
+      .on('error', err => {
         console.error(err);
         this.emit('end');
       })
@@ -244,75 +249,75 @@ gulp.task('scripts:watchify', function() {
  *
  * Compile SASS
  */
-gulp.task('styles:sass', function() {
-  gulp.src([
-      config.styles.entry
-    ])
-    .pipe(sass().on('error', function(err) {
-      console.error(err);
-      this.emit('end');
-    }))
-    .pipe(autoprefixer({
-      browsers: [
-        'last 2 versions',
-        'ie 9',
-        'ios > 7',
-      ],
-      cascade: false,
-    }))
-    .pipe(minify({
-      mediaMerging: true,
-      processImport: true,
-      roundingPrecision: 10,
-    }))
-    .pipe(gulp.dest(config.styles.dst))
-    .pipe(livereload(server));
-});
+gulp.task('styles:sass', () => gulp
+  .src([
+    config.styles.entry
+  ])
+  .pipe(sass().on('error', err => {
+    console.error(err);
+    this.emit('end');
+  }))
+  .pipe(autoprefixer({
+    browsers: [
+      'last 2 versions',
+      'ie 9',
+      'ios > 7',
+    ],
+    cascade: false,
+  }))
+  .pipe(minify({
+    mediaMerging: true,
+    processImport: true,
+    roundingPrecision: 10,
+  }))
+  .pipe(gulp.dest(config.styles.dst))
+  .pipe(livereload(server))
+);
 
 /**
  * STYLES:LINT
  *
- * Lint styles using .stylelintrc
+ * Lint styles using .stylelintrc and
  */
-gulp.task('styles:lint', function lintCssTask() {
-  return gulp.src([
-      config.styles.src
-    ])
-    .pipe(stylelint({
-      reporters: [
-        { formatter: 'string', console: true }
-      ]
-    }));
-});
+gulp.task('styles:lint', () => gulp
+  .src([
+    config.styles.src
+  ])
+  .pipe(stylelint({
+    reporters: [
+      { formatter: 'string', console: true }
+    ]
+  }))
+);
 
 /**
  * STYLES:WATCH
  *
  * Watch SASS for changes
  */
-gulp.task('styles:watch', function() {
-  return gulp.watch(config.styles.src, ['styles:sass']);
-});
+gulp.task('styles:watch', () => gulp
+  .watch(config.styles.src, ['styles:sass'])
+);
 
 /**
  * TWIG:REPLACE
  *
  * Replace build param on assets in layout to bust cache
  */
-gulp.task('twig:replace', function(cb) {
-  gulp.src([
-      config.twig.entry
-    ])
-    .pipe(replace(/\?build=(\d+)/g, '?build=' + Date.now()))
-    .pipe(gulp.dest(config.twig.dst));
-});
+gulp.task('twig:replace', cb => gulp
+  .src([
+    config.twig.entry
+  ])
+  .pipe(replace(/\?build=(\d+)/g, '?build=' + Date.now()))
+  .pipe(gulp.dest(config.twig.dst))
+);
 
 /**
  * WATCH
  *
  * Watch styles and scripts
  */
-gulp.task('watch', ['styles:watch', 'scripts:watchify'], function() {
+gulp.task('watch', ['styles:watch', 'scripts:watchify'], () => {
   livereload.listen(server);
 });
 
@@ -335,6 +340,6 @@ gulp.task('build', ['fonts', 'images', 'scripts', 'styles']);
  * This list will be written to the terminal when the default Gulp task is run.
  * The intention is to use direct tasks instead of a vague reference to the default task.
  */
-gulp.task('default', function() {
+gulp.task('default', () => {
   console.log('\nHello!\n\nThis gulpfile doesn\'t do anything by default. Please use the following to see a list of available tasks:\n\n$ gulp --tasks-simple\n\n');
 });

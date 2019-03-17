@@ -1,8 +1,10 @@
 {##
  # Contact form component
+ # @param {Form} model
  #}
 
 {# Params #}
+{% set model = model|default(craft.forms.getForm('contact')) %}
 
 {# Variables #}
 {% set handle = 'contact-form' %}
@@ -10,56 +12,79 @@
 {# Markup #}
 <div class="{{ handle }}">
     <form method="post">
+        <input type="hidden" name="action" value="forms-module/forms/submit" />
+        <input type="hidden" name="handle" value="{{ 'contact'|hash }}" />
         {{ csrfInput() }}
 
         {% include '_components/input' with {
-            required: true,
-            label: 'First Name',
+            type: model.getAttributeInputType('firstName'),
+            required: model.isAttributeRequired('firstName'),
+            label: model.getAttributeLabel('firstName'),
             name: 'firstName',
-            size: 'half',
+            value: model['firstName'],
+            errors: model.getErrors('firstName'),
+            size: model.getAttributeInputSize('firstName'),
         } %}
 
         {% include '_components/input' with {
-            required: true,
-            label: 'Last Name',
+            type: model.getAttributeInputType('lastName'),
+            required: model.isAttributeRequired('lastName'),
+            label: model.getAttributeLabel('lastName'),
             name: 'lastName',
-            size: 'half',
+            value: model['lastName'],
+            errors: model.getErrors('lastName'),
+            size: model.getAttributeInputSize('lastName'),
         } %}
 
         {% include '_components/input' with {
-            type: 'email',
-            required: true,
-            label: 'Email Address',
-            name: 'emailAddress',
-            size: 'half',
+            type: model.getAttributeInputType('email'),
+            required: model.isAttributeRequired('email'),
+            label: model.getAttributeLabel('email'),
+            name: 'email',
+            value: model['email'],
+            errors: model.getErrors('email'),
+            size: model.getAttributeInputSize('email'),
         } %}
 
         {% include '_components/input' with {
-            type: 'tel',
-            required: true,
-            label: 'Phone Number',
-            name: 'phoneNumber',
-            size: 'half',
+            type: model.getAttributeInputType('phone'),
+            required: model.isAttributeRequired('phone'),
+            label: model.getAttributeLabel('phone'),
+            name: 'phone',
+            value: model['phone'],
+            errors: model.getErrors('phone'),
+            size: model.getAttributeInputSize('phone'),
         } %}
 
         {% include '_components/input' with {
-            required: true,
-            label: 'Company Name',
-            name: 'companyName',
+            type: model.getAttributeInputType('company'),
+            required: model.isAttributeRequired('company'),
+            label: model.getAttributeLabel('company'),
+            name: 'company',
+            value: model['company'],
+            errors: model.getErrors('company'),
+            size: model.getAttributeInputSize('company'),
         } %}
 
         {% include '_components/input' with {
-            type: 'select',
-            required: true,
-            label: 'Your Budget',
-            name: 'yourBudget',
+            type: model.getAttributeInputType('budget'),
+            required: model.isAttributeRequired('budget'),
+            label: model.getAttributeLabel('budget'),
+            name: 'budget',
+            value: model['budget'],
+            options: model.getAttributeInputOptions('budget'),
+            errors: model.getErrors('budget'),
+            size: model.getAttributeInputSize('budget'),
         } %}
 
         {% include '_components/input' with {
-            type: 'textarea',
-            required: true,
-            label: 'Breifly describe your project',
+            type: model.getAttributeInputType('message'),
+            required: model.isAttributeRequired('message'),
+            label: model.getAttributeLabel('message'),
             name: 'message',
+            value: model['message'],
+            errors: model.getErrors('message'),
+            size: model.getAttributeInputSize('message'),
         } %}
 
         <button type="submit" title="Submit Form">

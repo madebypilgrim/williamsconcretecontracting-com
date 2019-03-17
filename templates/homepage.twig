@@ -7,12 +7,9 @@
  # |_@param {Matrix} overviewTeasers
  #}
 
-{#
-{% extends craft.app.request.isAjax() and not craft.app.request.isLivePreview() ? '_layouts/blank' : '_layouts/main' %}
-#}
+{# Markup #}
 {% extends '_layouts/main' %}
 
-{# Markup #}
 {% block left %}
     {% include '_components/sticky-background' with {
         image: entry.backgroundImage.one(),

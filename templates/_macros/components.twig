@@ -1,0 +1,31 @@
+{##
+ # Set global components and state variables inside of siteHandle context
+ # Site handle used to sync twig components w/ JS components
+ #}
+{% macro scaffold() %}
+    {% set siteHandle = 'williamsconcretecontracting' %}
+
+    <script type="text/javascript">
+        window[{{ siteHandle|json_encode|raw }}] = { components: [], state: {} };
+    </script>
+{% endmacro %}
+
+{##
+ # Instantiate new JS component class from componentHandle and params inside of siteHandle context
+ # Config object is parsed inside of /src/utilities/components.js instantiate function
+ #}
+{% macro new(componentHandle, params = null) %}
+    {% set siteHandle = 'williamsconcretecontracting' %}
+
+    {% set config = {
+        handle: componentHandle,
+    } %}
+
+    {% if params is not empty %}
+        {% set config = config|merge(params) %}
+    {% endif %}
+
+    <script type="text/javascript">
+        window[{{ siteHandle|json_encode|raw }}].components.push({{ config|json_encode|raw }});
+    </script>
+{% endmacro %}

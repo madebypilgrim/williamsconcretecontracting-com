@@ -42,4 +42,9 @@ $input-height: $spacing-md;
         min-height: $input-height * 4;
         padding: $spacing-xs;
     }
+
+    & > p {
+        margin-top: $spacing-xs / 2;
+        color: red;
+    }
 }

@@ -1,17 +1,18 @@
 {
-  "name": "williamsconcretecontracting-com",
+  "name": "echotanc-com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wray Ward Gulp Build",
   "main": "public_html/scripts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@bitbucket.org:wrayward/starter-kit-gulp.git"
   },
   "author": {
-    "name": "Trevor Plassman"
+    "name": "Wray Ward",
+    "url": "https://www.wrayward.com"
   },
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +22,7 @@
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "del": "^3.0.0",
+    "dotenv": "^6.2.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",

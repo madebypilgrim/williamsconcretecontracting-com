@@ -6,6 +6,7 @@
  # @param {string} name
  # @param {[]object} options
  # @param {string} value
+ # @param {[]string} errors
  # @param {string} size <full*, half, third>
  #}
 
@@ -16,6 +17,7 @@
 {% set name = name|default('') %}
 {% set options = options|default([]) %}
 {% set value = value|default('') %}
+{% set errors = errors|default([]) %}
 {% set size = size|default('') %}
 
 {# Variables #}
@@ -50,16 +52,12 @@
             </label>
         {% endfor %}
     {% case 'textarea' %}
-        {% spaceless %}
-            <textarea
-                id="{{ name }}"
-                name="{{ name }}"
-                {{ required ? 'required' }}
-                {{ value|default(label) }}
-                placeholder="{{ label }}" />
-                {{ value }}
-            </textarea>
-        {% endspaceless %}
+        <textarea
+            id="{{ name }}"
+            name="{{ name }}"
+            {{ required ? 'required' }}
+            {{ value|default(label) }}
+            placeholder="{{ label }}" />{{ value }}</textarea>
     {% default %}
         <input
             type="{{ type }}"
@@ -69,4 +67,8 @@
             {{ required ? 'required' }}
             placeholder="{{ label }}" />
     {% endswitch %}
+
+    {% if errors is not empty %}
+        <p>{{ errors|join(', ') }}</p>
+    {% endif %}
 </div>

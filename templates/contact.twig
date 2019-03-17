@@ -1,11 +1,28 @@
 {##
  # Contact single
+ # @controller {bool} success
+ # @controller {string} message
+ # @controller {Form} model
  # @param {Entry} entry
  #}
 
-{% extends '_layouts/main' %}
+{# Controller #}
+{% set success = success is defined and success %}
+{% set message = message|default('') %}
+{% set model = model|default(null) %}
+
+{# Variables #}
+{% set subheading = entry.pageSubheading %}
+{% if message is not empty %}
+    {% set subheading = message %}
+{% endif %}
+{% if success %}
+    {% set subheading = entry.contactConfirmationMessage %}
+{% endif %}
 
 {# Markup #}
+{% extends '_layouts/main' %}
+
 {% block left %}
     {% include '_components/contact-details' with {
         heading: entry.contactHeading,
@@ -21,12 +38,16 @@
         <header>
             {% include '_components/page-heading' with {
                 heading: entry.pageHeading,
-                subheading: entry.pageSubheading,
+                subheading: subheading,
             } %}
         </header>
 
-        <section>
-            {% include '_components/contact-form' %}
-        </section>
+        {% if not success %}
+            <section>
+                {% include '_components/contact-form' with {
+                    model: model,
+                } %}
+            </section>
+        {% endif %}
     </article>
 {% endblock %}
