@@ -4,8 +4,6 @@
  # @param {string} right
  #}
 
-{% import '_macros/components' as components %}
-
 {# Params #}
 {% set left = left|default('') %}
 {% set right = right|default('') %}
@@ -18,6 +16,8 @@
 {% set unloadingClass = 'is-unloading' %}
 
 {# Markup #}
+{% import '_macros/components' as components %}
+
 <div id="{{ id }}" class="{{ handle }}">
     {# Debugging grid #}
     {#

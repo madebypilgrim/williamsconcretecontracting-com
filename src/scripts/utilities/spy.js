@@ -131,14 +131,14 @@ export function spyNav({
  */
 export function stick() {
 //   const stickies = document.querySelectorAll('[data-sticky="true"]');
-// 
+//
 //   Array.from(stickies)
 //     // Only stick elements that have not been stuck
 //     .filter(sticky => !sticky.getAttribute('data-stuck'))
 //     // Apply polyfill script for IE and add stuck data attribute
 //     .forEach(sticky => {
 //       StickyFill.addOne(sticky);
-// 
+//
 //       sticky.setAttribute('data-stuck', true);
 //     });
 }

@@ -8,57 +8,53 @@
 
 {# Params #}
 {% set left %}
-  {% block left %}{% endblock %}
+    {% block left %}{% endblock %}
 {% endset %}
 {% set right %}
-  {% block right %}{% endblock %}
+    {% block right %}{% endblock %}
 {% endset %}
 
 {# Markup #}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-  <head>
-    {% include '_meta/data' %}
-    {#
-    {% include '_meta/favicons' %}
-    #}
+    <head>
+        {% include '_meta/data' %}
+        {#
+        {% include '_meta/favicons' %}
+        #}
 
-    {# Main stylesheet #}
-    <link rel="stylesheet" type="text/css" href="/styles/index.css?build=1536262109825" />
-  </head>
+        {# Main stylesheet #}
+        <link rel="stylesheet" type="text/css" href="/styles/index.css?build=1536262109825" />
+    </head>
 
-  <body data-no-js="true">
-    <script type="text/javascript">
-      document.body.setAttribute('data-no-js', false);
-    </script>
+    <body data-no-js="true">
+        <script type="text/javascript">
+            document.body.setAttribute('data-no-js', false);
+        </script>
 
-    {{ components.scaffold() }}
+        {{ components.scaffold() }}
 
-    <header>
-      {% include '_components/header' %}
-    </header>
+        <header>
+            {% include '_components/header' %}
+        </header>
 
-    <main>
-      {% include '_components/main' with {
-        left: left,
-        right: right,
-      } %}
-    </main>
+        <main>
+            {% include '_components/main' with {
+                left: left,
+                right: right,
+            } %}
+        </main>
 
-    <footer>
-      {% include '_components/footer' %}
-    </footer>
+        <footer>
+            {% include '_components/footer' %}
+        </footer>
 
-    {% include '_components/modal' %}
+        {# Main scripts #}
+        <script type="text/javascript" src="/scripts/index.js?build=1536262109825"></script>
 
-    {% include '_components/loader' %}
-
-    {# Main scripts #}
-    <script type="text/javascript" src="/scripts/index.js?build=1536262109825"></script>
-
-    {# LiveReload (development only) #}
-    {% if constant('CRAFT_ENVIRONMENT') == 'development' %}
-        <script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>
-    {% endif %}
-  </body>
+        {# LiveReload (development only) #}
+        {% if constant('CRAFT_ENVIRONMENT') == 'development' %}
+            <script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>
+        {% endif %}
+    </body>
 </html>

@@ -2,26 +2,25 @@ import { events } from '../utilities/custom-events';
 import { scrollTop } from '../utilities/scroll';
 
 const ANIMATION_DURATION = 500; // miliseconds
-const REFRESH_RATE = ANIMATION_DURATION / 60;
 
 export default class {
   constructor({
-    id,
+    // id,
     lockedClass,
     loadingClass,
     unloadingClass,
   }) {
     // Elements and class variables
-    const el = document.getElementById(id);
+    // const el = document.getElementById(id);
     const links = Array.from(document.querySelectorAll('a'))
       .filter(l => (
         !l.href.startsWith('tel:')
         && !l.href.startsWith('mailto:')
         && (l.getAttribute('target') || 'self') === 'self'
-      ))
+      ));
 
     // Event handler functions
-    function handleLockScroll(e) {
+    function handleLockScroll() {
       document.body.classList.add(lockedClass);
     }
     function handleUnlockScroll() {

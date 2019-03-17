@@ -1,8 +1,7 @@
-// Config
-import { siteHandle } from '../config';
-
 // Utilities
 import { spySections, stick } from './spy';
+
+const SITE_HANDLE = 'williamsconcretecontracting';
 
 let _classMap = null; // eslint-disable-line no-underscore-dangle
 
@@ -17,8 +16,8 @@ export function instantiate(map = null) {
 
   if (_classMap === null) return;
 
-  while (window[siteHandle].components.length > 0) {
-    const { components, state } = window[siteHandle];
+  while (window[SITE_HANDLE].components.length > 0) {
+    const { components, state } = window[SITE_HANDLE];
     const config = components.shift();
     const Class = _classMap[config.handle];
 
@@ -54,7 +53,7 @@ export function injectMarkup(container = null, markup = '', append = false) {
 
   // Evaluate scripts returned from component markup if for new component
   Array.from(scripts)
-    .filter(script => script.textContent.includes(`${siteHandle}`))
+    .filter(script => script.textContent.includes(`${SITE_HANDLE}`))
     .forEach(script => { eval(script.textContent); }); // eslint-disable-line no-eval
 
   // Instantiate components

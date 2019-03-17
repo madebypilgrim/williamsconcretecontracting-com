@@ -23,26 +23,26 @@
 
 {# Markup #}
 <style type="text/css">
-  .{{ uniqueClass }} {
-    background-position: {{ position }};
-    background-size: {{ size }};
-    background-repeat: {{ repeat }};
-  }
-
-  @media (max-width: {{ breakpoint - 1 }}px) {
     .{{ uniqueClass }} {
-      background-image: url({{ url }});
+        background-position: {{ position }};
+        background-size: {{ size }};
+        background-repeat: {{ repeat }};
     }
-  }
 
-  @media (min-width: {{ breakpoint }}px) {
-    .{{ uniqueClass }} {
-      background-image: url({{ url2x }});
+    @media (max-width: {{ breakpoint - 1 }}px) {
+        .{{ uniqueClass }} {
+            background-image: url({{ url }});
+        }
     }
-  }
+
+    @media (min-width: {{ breakpoint }}px) {
+        .{{ uniqueClass }} {
+            background-image: url({{ url2x }});
+        }
+    }
 </style>
 
 <div class="{{ handle }}-cont">
-  <div class="{{ uniqueClass }} {{ handle }} {{ handle }}--mobile"></div>
-  <div class="{{ uniqueClass }} {{ handle }} {{ handle }}--desktop"></div>
+    <div class="{{ uniqueClass }} {{ handle }} {{ handle }}--mobile"></div>
+    <div class="{{ uniqueClass }} {{ handle }} {{ handle }}--desktop"></div>
 </div>
