@@ -17,7 +17,7 @@ const actions = {
 
 // Event handler functions
 function handleDOMConentLoaded() {
-    const scaffold = window['williamsconcretecontracting'];
+    const scaffold = window.williamsconcretecontracting;
 
     function cb() {
         // Do something after components initialize

@@ -10,7 +10,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1569184294
+dateModified: 1569187987
 email:
   fromEmail: trevor@madebypilgrim.com
   fromName: 'Williams Concrete Contracting'
@@ -1519,14 +1519,14 @@ siteGroups:
     name: 'Williams Concrete Contracting'
 sites:
   ed3e2f11-02da-412b-a5ff-8f49aadb2dde:
+    siteGroup: 7d57060f-607c-45db-be7e-be1f6af515f1
     name: 'Williams Concrete Contracting'
     handle: default
     language: en-US
     hasUrls: true
-    baseUrl: $DEFAULT_SITE_URL
+    baseUrl: $SITE_URL
     sortOrder: 1
     primary: true
-    siteGroup: 7d57060f-607c-45db-be7e-be1f6af515f1
 superTableBlockTypes:
   21e9ae2f-4d5c-4ce6-9e48-942cf23460e1:
     field: e8249147-efb9-4e69-8809-ba4e43b31dba
@@ -1832,17 +1832,17 @@ volumes:
     name: 'Project Images'
     handle: projectImages
     type: craft\volumes\Local
-    hasUrls: false
-    url: 'http://williamsconcretecontracting.localhost/uploads/images/project'
+    hasUrls: true
+    url: '@assetBaseUrl/images/project'
     settings:
-      path: /Users/tplassman/Sites/mbp/williamsconcretecontracting/public_html/uploads/images/project
+      path: '@assetBasePath/images/project'
     sortOrder: 0
   87d3839a-4bf1-44e2-8139-bad516bf7b92:
     name: 'Site Images'
     handle: siteImages
     type: craft\volumes\Local
     hasUrls: true
-    url: 'http://williamsconcretecontracting.localhost/uploads/images/site'
+    url: '@assetBaseUrl/images/site'
     settings:
-      path: /Users/tplassman/Sites/mbp/williamsconcretecontracting/public_html/uploads/images/site
+      path: '@assetBasePath/images/site'
     sortOrder: 0

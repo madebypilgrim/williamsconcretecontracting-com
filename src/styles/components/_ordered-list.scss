@@ -61,6 +61,7 @@ $handle: "ordered-list";
         & > h2 {
             @include fadeUp(150ms);
             @include font("heading-sm");
+            @include bold;
             max-width: $max-width-sm;
             margin-bottom: $spacing-xs;
         }

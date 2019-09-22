@@ -67,17 +67,6 @@
         } %}
 
         {% include '_components/input' with {
-            type: model.getAttributeInputType('budget'),
-            required: model.isAttributeRequired('budget'),
-            label: model.getAttributeLabel('budget'),
-            name: 'budget',
-            value: model['budget'],
-            options: model.getAttributeInputOptions('budget'),
-            errors: model.getErrors('budget'),
-            size: model.getAttributeInputSize('budget'),
-        } %}
-
-        {% include '_components/input' with {
             type: model.getAttributeInputType('message'),
             required: model.isAttributeRequired('message'),
             label: model.getAttributeLabel('message'),

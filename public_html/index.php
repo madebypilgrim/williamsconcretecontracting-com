@@ -3,11 +3,6 @@
  * Craft web bootstrap file
  */
 
-// Custom constants
-define('DEV_EMAIL', getenv('DEV_EMAIL'));
-define('CRAFT_CACHE', getenv('CRAFT_CACHE'));
-define('HONEYPOT_HANDLE', 'liquid_gold');
-
 // Set path constants
 define('CRAFT_BASE_PATH', dirname(__DIR__));
 define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
@@ -18,6 +13,11 @@ require_once CRAFT_VENDOR_PATH.'/autoload.php';
 // Load dotenv?
 if (file_exists(CRAFT_BASE_PATH.'/.env')) {
     (new Dotenv\Dotenv(CRAFT_BASE_PATH))->load();
+
+    // Custom constants
+    define('HONEYPOT_HANDLE', 'liquid_gold');
+    define('DEV_EMAIL', getenv('DEV_EMAIL'));
+    define('CRAFT_CACHE', getenv('CRAFT_CACHE'));
 }
 
 // Load and run Craft

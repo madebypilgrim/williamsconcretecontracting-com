@@ -22,7 +22,6 @@ class Contact extends Form implements Saveable
     public $email;
     public $phone;
     public $company;
-    public $budget;
     public $message;
 
     public function __construct()
@@ -40,7 +39,6 @@ class Contact extends Form implements Saveable
             ['email', 'email'],
             ['phone', 'string'],
             ['company', 'string'],
-            ['budget', 'string'],
             ['message', 'string'],
         ];
     }
@@ -53,7 +51,6 @@ class Contact extends Form implements Saveable
             'email' => 'Email Address',
             'phone' => 'Phone Number',
             'company' => 'Company Name',
-            'budget' => 'Your Budget',
             'message' => 'Breifly describe your project.',
         ];
     }
@@ -66,20 +63,13 @@ class Contact extends Form implements Saveable
             'email' => 'email',
             'phone' => 'tel',
             'company' => 'text',
-            'budget' => 'select',
             'message' => 'textarea',
         ];
     }
 
     public function attributeOptions(): array
     {
-        return [
-            'budget' => [
-                ['value' => '1000000', 'label' => '$1M'],
-                ['value' => '2000000', 'label' => '$2M'],
-                ['value' => '5000000', 'label' => '$5M'],
-            ],
-        ];
+        return [];
     }
 
 
@@ -91,7 +81,6 @@ class Contact extends Form implements Saveable
             'email' => 'half',
             'phone' => 'half',
             'company' => 'full',
-            'budget' => 'full',
             'message' => 'full',
         ];
     }
@@ -111,7 +100,6 @@ class Contact extends Form implements Saveable
             'formEmail' => $this->email,
             'formPhoneNumber' => $this->phone,
             'formCompany' => $this->company,
-            'formBudget' => $this->budget,
             'formMessage' => $this->message,
         ]);
 
