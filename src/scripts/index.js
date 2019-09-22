@@ -4,8 +4,6 @@ import pop from 'compop';
 // Components
 import Main from './components/main';
 
-const { SITE_HANDLE } = process.env;
-
 /* eslint-disable quote-props */
 const classMap = {
     'main': Main,
@@ -19,7 +17,7 @@ const actions = {
 
 // Event handler functions
 function handleDOMConentLoaded() {
-    const scaffold = window[SITE_HANDLE];
+    const scaffold = window['williamsconcretecontracting'];
 
     function cb() {
         // Do something after components initialize

@@ -67,17 +67,17 @@
     font-weight: $font-weight-bd;
 
     // @if ($serif) {
-        //   @if ($italic) {
-            //     font-family: $font-family-serif-bd-it;
-        //   } @else {
-            //     font-family: $font-family-serif-bd;
-        //   }
+    //   @if ($italic) {
+    //     font-family: $font-family-serif-bd-it;
+    //   } @else {
+    //     font-family: $font-family-serif-bd;
+    //   }
     // } @else {
-        //   @if ($italic) {
-            //     font-family: $font-family-sans-bd-it;
-        //   } @else {
-            //     font-family: $font-family-sans-bd;
-        //   }
+    //   @if ($italic) {
+    //     font-family: $font-family-sans-bd-it;
+    //   } @else {
+    //     font-family: $font-family-sans-bd;
+    //   }
     // }
 }
 
@@ -85,19 +85,19 @@
     font-style: italic;
 
     // @if ($serif) {
-        //   @if ($weight == "md") {
-            //     font-family: $font-family-serif-md-it;
-        //   } @else if ($weight == "bd") {
-            //     font-family: $font-family-serif-bd-it;
-        //   }
+    //   @if ($weight == "md") {
+    //     font-family: $font-family-serif-md-it;
+    //   } @else if ($weight == "bd") {
+    //     font-family: $font-family-serif-bd-it;
+    //   }
     // } @else {
-        //   @if ($weight == "lt") {
-            //     font-family: $font-family-sans-lt-it;
-        //   } @else if ($weight == "md") {
-            //     font-family: $font-family-sans-md-it;
-        //   } @else if ($weight == "bd") {
-            //     font-family: $font-family-sans-bd-it;
-        //   }
+    //   @if ($weight == "lt") {
+    //     font-family: $font-family-sans-lt-it;
+    //   } @else if ($weight == "md") {
+    //     font-family: $font-family-sans-md-it;
+    //   } @else if ($weight == "bd") {
+    //     font-family: $font-family-sans-bd-it;
+    //   }
     // }
 }
 

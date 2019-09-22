@@ -30,19 +30,19 @@ $gutter-sm: $spacing-sm;
 $gutter-md: $spacing-sm;
 $gutter-lg: $spacing-sm;
 $grid-sm: (
-base: 4,
-cont-spread: "wider",
-gutter: $gutter-sm,
+    base: 4,
+    cont-spread: "wider",
+    gutter: $gutter-sm,
 );
 $grid-md: (
-base: 8,
-cont-spread: "wider",
-gutter: $gutter-md,
+    base: 8,
+    cont-spread: "wider",
+    gutter: $gutter-md,
 );
 $grid-lg: (
-base: 12,
-cont-spread: "wider",
-gutter: $gutter-lg,
+    base: 12,
+    cont-spread: "wider",
+    gutter: $gutter-lg,
 );
 $nav-height-sm: $spacing-xs * 5;
 $nav-height-md: $spacing-xs * 6;
@@ -86,4 +86,3 @@ $animate-sm: $animate-speed-sm $animate-profile;
 $animate-md: $animate-speed-md $animate-profile;
 $animate-lg: $animate-speed-lg $animate-profile;
 $animate-xl: $animate-speed-xl $animate-profile;
-
