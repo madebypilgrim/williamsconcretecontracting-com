@@ -30,7 +30,7 @@ class FormsModule extends Module
         self::$forms = $this->get('forms');
 
         // Set web variable for front end templates
-        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function(Event $event) {
+        Event::on(CraftVariable::class, CraftVariable::EVENT_INIT, function (Event $event) {
             /** @var CraftVariable $variable */
             $variable = $event->sender;
 

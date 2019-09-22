@@ -5,42 +5,42 @@ $handle: "main";
 
     // Dormant: requires input and toggle in markup
     // & > [for="grid-toggle"] {
-    //     @include absolute(auto, 0, 0, auto);
-    //     position: fixed;
-    //     z-index: 10000;
-    //     padding: ($spacing-xs / 2) $spacing-xs;
-    //     background-color: $color-bg-gray-dk;
-    //     cursor: pointer;
+        //     @include absolute(auto, 0, 0, auto);
+        //     position: fixed;
+        //     z-index: 10000;
+        //     padding: ($spacing-xs / 2) $spacing-xs;
+        //     background-color: $color-bg-gray-dk;
+        //     cursor: pointer;
     // }
 
     // &__layout-guide-cont {
-    //     @include container;
-    //     @include fullOverlay;
-    //     position: fixed;
-    //     z-index: 10000;
-    //     pointer-events: none;
+        //     @include container;
+        //     @include fullOverlay;
+        //     position: fixed;
+        //     z-index: 10000;
+        //     pointer-events: none;
 
-    //     &__span {
-    //         height: 100vh;
-    //         background-color: rgba($color-br-gray-lt, 0.1);
+        //     &__span {
+            //         height: 100vh;
+            //         background-color: rgba($color-br-gray-lt, 0.1);
 
-    //         @include span($grid: $grid-sm);
-    //         @include push($grid: $grid-sm);
+            //         @include span($grid: $grid-sm);
+            //         @include push($grid: $grid-sm);
 
-    //         @media (min-width: $screen-sm-min) {
-    //             @include span($grid: $grid-md);
-    //             @include push($grid: $grid-md);
-    //         }
+            //         @media (min-width: $screen-sm-min) {
+                //             @include span($grid: $grid-md);
+                //             @include push($grid: $grid-md);
+            //         }
 
-    //         @media (min-width: $screen-md-min) {
-    //             @include span($grid: $grid-lg);
-    //             @include push($grid: $grid-lg);
-    //         }
-    //     }
+            //         @media (min-width: $screen-md-min) {
+                //             @include span($grid: $grid-lg);
+                //             @include push($grid: $grid-lg);
+            //         }
+        //     }
 
-    //     input[type="checkbox"]:checked + & {
-    //         display: none;
-    //     }
+        //     input[type="checkbox"]:checked + & {
+            //         display: none;
+        //     }
     // }
 
     &__main-cont {

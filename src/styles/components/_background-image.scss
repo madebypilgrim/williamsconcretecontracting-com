@@ -1,23 +1,23 @@
 $elClass: "background-image";
 
 .#{$elClass}-cont {
-  @include fullOverlay();
-  overflow: hidden;
+    @include fullOverlay();
+    overflow: hidden;
 }
 
 .#{$elClass} {
-  @include fullOverlay();
-  display: none;
+    @include fullOverlay();
+    display: none;
 
-  &--mobile {
-    @media (max-width: $screen-sm-max) {
-      display: block;
+    &--mobile {
+        @media (max-width: $screen-sm-max) {
+            display: block;
+        }
     }
-  }
 
-  &--desktop {
-    @media (min-width: $screen-md-min) {
-      display: block;
+    &--desktop {
+        @media (min-width: $screen-md-min) {
+            display: block;
+        }
     }
-  }
 }

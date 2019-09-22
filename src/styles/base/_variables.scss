@@ -30,19 +30,19 @@ $gutter-sm: $spacing-sm;
 $gutter-md: $spacing-sm;
 $gutter-lg: $spacing-sm;
 $grid-sm: (
-    base: 4,
-    cont-spread: "wider",
-    gutter: $gutter-sm,
+base: 4,
+cont-spread: "wider",
+gutter: $gutter-sm,
 );
 $grid-md: (
-    base: 8,
-    cont-spread: "wider",
-    gutter: $gutter-md,
+base: 8,
+cont-spread: "wider",
+gutter: $gutter-md,
 );
 $grid-lg: (
-    base: 12,
-    cont-spread: "wider",
-    gutter: $gutter-lg,
+base: 12,
+cont-spread: "wider",
+gutter: $gutter-lg,
 );
 $nav-height-sm: $spacing-xs * 5;
 $nav-height-md: $spacing-xs * 6;
@@ -69,7 +69,7 @@ $color-br-gray-dk: #D8D8D8;
 
 /* Font */
 
-$font-family-sans-md: Helvetica Neue,Helvetica,Arial,sans-serif;
+$font-family-sans-md: helvetica neue,helvetica,arial,sans-serif;
 $font-family-serif-md: times, serif;;
 $font-weight-lt: 200;
 $font-weight-md: 400;
