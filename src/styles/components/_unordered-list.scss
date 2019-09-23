@@ -58,6 +58,7 @@ $handle: "unordered-list";
                 width: 50%;
             }
 
+            & > h2,
             & > h4 {
                 @media (min-width: $screen-md-min) {
                     width: 50%;
