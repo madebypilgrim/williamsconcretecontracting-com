@@ -1,127 +1,127 @@
 @mixin richText() {
-  max-width: $max-width-lg;
+    max-width: $max-width-lg;
 
-  & h1, h2, h3, h4, h5, h6 {
-    margin-top: $spacing-sm;
+    & h1, h2, h3, h4, h5, h6 {
+        margin-top: $spacing-sm;
 
-    &:first-child { margin-top: 0; }
-    & + p {
-      margin-top: $spacing-xs / 2;
-    }
-  }
-
-  & h2, h3, h4, h5, h6 {
-    @include font("heading-sm");
-    @include emphasize(true);
-    margin-bottom: $spacing-sm;
-
-    & > em {
-      color: $color-fg-gray-dk;
-    }
-  }
-
-  & p,
-  & ul > li,
-  & ol > li {
-    @include listMargin($spacing-sm);
-    display: block;
-    width: 100%;
-    color: #5E5656; // Per Josh
-  }
-
-  & sup {
-    font-size: 0.75em;
-  }
-
-  & ul, ol {
-    @include listMargin($spacing-sm);
-    list-style-position: outside;
-  }
-
-  & ul > li,
-  & ol > li {
-    position: relative;
-    margin-top: $spacing-xs;
-    padding-left: $spacing-xs;
-
-    &:before {
-      @include absolute(0, auto, auto, 0);
-      color: $color-green-lt;
-    }
-  }
-  & ul > li {
-    &:before {
-      content: "\2022";
-    }
-  }
-
-  & ol > li {
-    counter-increment: li;
-    padding-left: $spacing-xs * 1.5;
-
-    &:before {
-      content: counter(li) ".";
-    }
-  }
-
-  & figure {
-    @include listMargin($spacing-sm);
-
-    & > img {
-      display: block;
-      max-width: 100%;
+        &:first-child { margin-top: 0; }
+        & + p {
+            margin-top: $spacing-xs / 2;
+        }
     }
 
-    & > figcaption {
-      @include font("body-xs");
-      @include emphasize;
-      @include space($spacing-xs);
-      // border-bottom: 1px solid $color-br-gray-lt;
+    & h2, h3, h4, h5, h6 {
+        @include font("heading-sm");
+        @include emphasize(true);
+        margin-bottom: $spacing-sm;
 
-      @media (max-width: $screen-xs-max) {
-        display: none;
-      }
+        & > em {
+            color: $color-fg-gray-dk;
+        }
     }
-  }
 
-  & blockquote {
-    @include font("heading-md");
-    @include bold;
-    @include pad($spacing-sm, ($spacing-sm * 3));
-    position: relative;
-    margin-top: $spacing-sm;
-    border-left: 2px solid $color-green-lt;
-
-    & > i {
-      @include absolute(0, 0, auto, auto);
-      width: $spacing-md;
-      height: $spacing-md;
-      background-color: $color-green-lt;
-      fill: $color-green-lt;
+    & p,
+    & ul > li,
+    & ol > li {
+        @include listMargin($spacing-sm);
+        display: block;
+        width: 100%;
+        color: #5E5656; // Per Josh
     }
-  }
 
-  & a {
-    color: $color-green-lt;
-  }
+    & sup {
+        font-size: 0.75em;
+    }
 
-  & b,
-  & strong {
-    @include bold;
-    color: $color-fg-gray-dk;
-  }
+    & ul, ol {
+        @include listMargin($spacing-sm);
+        list-style-position: outside;
+    }
 
-  & em {
-    @include italic;
-    color: $color-fg-gray-dk;
-  }
+    & ul > li,
+    & ol > li {
+        position: relative;
+        margin-top: $spacing-xs;
+        padding-left: $spacing-xs;
 
-  & hr {
-    width: 100%;
-    margin: $spacing-md auto $spacing-sm auto;
-  }
+        &:before {
+            @include absolute(0, auto, auto, 0);
+            color: $color-green-lt;
+        }
+    }
+    & ul > li {
+        &:before {
+            content: "\2022";
+        }
+    }
 
-  & iframe {
-    width: 100%;
-  }
+    & ol > li {
+        counter-increment: li;
+        padding-left: $spacing-xs * 1.5;
+
+        &:before {
+            content: counter(li) ".";
+        }
+    }
+
+    & figure {
+        @include listMargin($spacing-sm);
+
+        & > img {
+            display: block;
+            max-width: 100%;
+        }
+
+        & > figcaption {
+            @include font("body-xs");
+            @include emphasize;
+            @include space($spacing-xs);
+            // border-bottom: 1px solid $color-br-gray-lt;
+
+            @media (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+    }
+
+    & blockquote {
+        @include font("heading-md");
+        @include bold;
+        @include pad($spacing-sm, ($spacing-sm * 3));
+        position: relative;
+        margin-top: $spacing-sm;
+        border-left: 2px solid $color-green-lt;
+
+        & > i {
+            @include absolute(0, 0, auto, auto);
+            width: $spacing-md;
+            height: $spacing-md;
+            background-color: $color-green-lt;
+            fill: $color-green-lt;
+        }
+    }
+
+    & a {
+        color: $color-green-lt;
+    }
+
+    & b,
+    & strong {
+        @include bold;
+        color: $color-fg-gray-dk;
+    }
+
+    & em {
+        @include italic;
+        color: $color-fg-gray-dk;
+    }
+
+    & hr {
+        width: 100%;
+        margin: $spacing-md auto $spacing-sm auto;
+    }
+
+    & iframe {
+        width: 100%;
+    }
 }
