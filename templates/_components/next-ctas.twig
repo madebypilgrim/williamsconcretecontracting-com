@@ -13,15 +13,15 @@
 {% if ctas is not empty %}
     <div class="{{ handle }}">
         {% for cta in ctas %}
-            <div class="{{ handle }}__cta-cont">
+            <a
+                href="{{ cta.ctaLink.linkPage.one()|default('') }}"
+                title="{{ cta.ctaLink.linkTitle }}">
                 <h3>{{ cta.ctaHeading }}</h3>
-                <a
-                    href="{{ cta.ctaLink.linkPage.one()|default('') }}"
-                    title="{{ cta.ctaLink.linkTitle }}">
+                <em>
                     {{ cta.ctaLink.linkTitle }}
                     {% include '_components/icon' with { icon: 'arrow-right' } %}
-                </a>
-            </div>
+                </em>
+            </a>
         {% endfor %}
     </div>
 {% endif %}

@@ -1,4 +1,4 @@
-@mixin arrowLink($background-inverted: true) {
+@mixin arrowLink($inverted: true) {
     @include tap-target;
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
         display: inline-block;
         margin-top: $spacing-xs / 4;
         margin-left: $spacing-xs;
-        fill: if($background-inverted, $color-br-gray-dk, $color-br-gray-lt);
+        fill: if($inverted, $color-br-gray-dk, $color-br-gray-lt);
         transition: transform $animate-sm;
     }
 

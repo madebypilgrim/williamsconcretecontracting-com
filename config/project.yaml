@@ -10,12 +10,14 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1569187987
+dateModified: 1569205436
 email:
   fromEmail: trevor@madebypilgrim.com
   fromName: 'Williams Concrete Contracting'
   transportType: craft\mail\transportadapters\Sendmail
 fieldGroups:
+  346fc0b0-151f-4683-b042-f1d91d0c796a:
+    name: 'Global Fields'
   348ab01c-5a4d-4b4f-bd52-ea3595be3f34:
     name: 'Page Fields'
   495fcbba-e027-47f1-a828-5ba7838ca872:
@@ -57,6 +59,24 @@ fields:
       columnType: text
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: text
+  1fb5c33f-1c1a-48bc-9a81-decd7c3a3675:
+    name: 'Header Links'
+    handle: headerLinks
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: verbb\supertable\fields\SuperTableField
+    settings:
+      minRows: '1'
+      maxRows: '6'
+      contentTable: '{{%stc_headerlinks}}'
+      propagationMethod: all
+      staticField: ''
+      fieldLayout: table
+      selectionLabel: 'Add a header link'
+    contentColumnType: string
+    fieldGroup: 346fc0b0-151f-4683-b042-f1d91d0c796a
   25217f04-d5f9-4556-88db-abb66ad94e32:
     name: 'Page Subheading'
     handle: pageSubheading
@@ -394,6 +414,23 @@ fields:
       localizeBlocks: false
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: string
+  7fe2494c-221b-4b3b-aac3-bab626e6fb4e:
+    name: 'Header Overview'
+    handle: headerOverview
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: '1'
+      initialRows: '2'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 346fc0b0-151f-4683-b042-f1d91d0c796a
   83ee0db8-18ee-4f51-bc85-ff9de4197026:
     name: 'Ordered List Heading'
     handle: orderedListHeading
@@ -706,6 +743,23 @@ fields:
       columnType: text
     fieldGroup: 495fcbba-e027-47f1-a828-5ba7838ca872
     contentColumnType: text
+globalSets:
+  4a867a98-5240-4cff-9843-d50d050cb989:
+    name: Header
+    handle: header
+    fieldLayouts:
+      a120350f-b14b-4cb9-a9a0-5ce0957b6185:
+        tabs:
+          -
+            name: Fields
+            sortOrder: 1
+            fields:
+              1fb5c33f-1c1a-48bc-9a81-decd7c3a3675:
+                required: false
+                sortOrder: 1
+              7fe2494c-221b-4b3b-aac3-bab626e6fb4e:
+                required: false
+                sortOrder: 2
 matrixBlockTypes:
   188c4b66-4686-46c4-bd3b-60a783ee19fc:
     name: 'List Item'
@@ -1682,6 +1736,59 @@ superTableBlockTypes:
           localizeRelations: false
         fieldGroup: null
         contentColumnType: string
+  801f31b8-2d8f-43b4-ab99-9be4296afcaf:
+    field: 1fb5c33f-1c1a-48bc-9a81-decd7c3a3675
+    fields:
+      83f20718-edf0-46dc-a389-b57bf473489d:
+        name: 'Link Title'
+        handle: linkTitle
+        instructions: ''
+        searchable: false
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\PlainText
+        settings:
+          placeholder: ''
+          code: ''
+          multiline: ''
+          initialRows: '4'
+          charLimit: ''
+          columnType: text
+        contentColumnType: text
+        fieldGroup: null
+      b6a49418-f2c9-4201-9f10-b42d69bd7b0d:
+        name: 'Link Page'
+        handle: linkPage
+        instructions: ''
+        searchable: false
+        translationMethod: site
+        translationKeyFormat: null
+        type: craft\fields\Entries
+        settings:
+          sources:
+            - singles
+          source: null
+          targetSiteId: null
+          viewMode: null
+          limit: '1'
+          selectionLabel: 'Add a link page'
+          localizeRelations: false
+          validateRelatedElements: ''
+        contentColumnType: string
+        fieldGroup: null
+    fieldLayouts:
+      c9001ca8-a063-44ca-b712-e74ca61b6d97:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              83f20718-edf0-46dc-a389-b57bf473489d:
+                required: false
+                sortOrder: 1
+              b6a49418-f2c9-4201-9f10-b42d69bd7b0d:
+                required: false
+                sortOrder: 2
   c5e38bad-8c7a-4300-9196-6a6e1d292a49:
     field: 8c996a7f-4d87-4970-b5d5-d9fd6cfc44fc
     fieldLayouts:

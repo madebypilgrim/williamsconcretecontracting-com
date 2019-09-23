@@ -9,7 +9,7 @@ $handle: "next-ctas";
         flex-wrap: wrap;
     }
 
-    &__cta-cont {
+    > a {
         @include fadeUp;
         display: flex;
         flex-direction: column;
@@ -31,7 +31,7 @@ $handle: "next-ctas";
             @include font("body-lg");
         }
 
-        & > a {
+        & > em {
             @include swipeIn(true);
             @include arrowLink(true);
             margin-top: $spacing-lg;

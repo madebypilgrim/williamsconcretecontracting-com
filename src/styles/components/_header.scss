@@ -16,6 +16,7 @@ $handle: "header";
 
     // Logo
     & > a {
+        @include fadeIn;
         @include absolute($spacing-xs * 1.5, auto, auto, $gutter-sm);
         z-index: 1;
         color: $color-white;

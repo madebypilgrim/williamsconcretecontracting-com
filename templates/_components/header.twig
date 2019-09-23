@@ -1,19 +1,15 @@
 {##
  # Header component
- # @global {GlobalSet} gHeader
+ # @global {GlobalSet} header
  #}
+
+{# Params #}
+{% set links = header.headerLinks.all() %}
+{% set overview = header.headerOverview %}
 
 {# Variables #}
 {% set handle = 'header' %}
 {% set activeClass = 'is-active' %}
-
-{% set links = [
-    { url: '', title: 'Overview' },
-    { url: 'services', title: 'Services' },
-    { url: 'projects', title: 'Projects' },
-    { url: 'about', title: 'About Us' },
-    { url: 'contact', title: 'Contact' },
-] %}
 
 {# Markup #}
 <div class="{{ handle }}">
@@ -26,27 +22,19 @@
         <span>Close</span>
     </label>
     <nav>
-        {% for link in links %}
-            {% set isActive = link.url in craft.app.request.pathInfo %}
-            {% if link.url is empty and craft.app.request.pathInfo is not empty %}
-                {% set isActive = false %}
-            {% endif %}
+        {% for l in links %}
+            {% set url = l.linkPage.one().url|default(siteUrl) %}
 
             <a
-                href="{{ siteUrl(link.url) }}"
-                title="{{ link.title }}"
-                {% if isActive %}
-                    class="{{ activeClass }}"
-                {% endif %}
-            >
-                {{ link.title }}
+                href="{{ url }}"
+                title="{{ l.linkTitle }}"
+                class="{{ url == url(craft.app.request.pathInfo) ? activeClass }}">
+                {{ l.linkTitle }}
                 {% if loop.last %}
                     {% include '_components/icon' with { icon: 'arrow-right' } %}
                 {% endif %}
             </a>
         {% endfor %}
     </nav>
-    <footer>
-        Williams Concrete offers turnkey concrete packages to meet any industrial or commercial needs.
-    </footer>
+    <footer>{{ overview }}</footer>
 </div>

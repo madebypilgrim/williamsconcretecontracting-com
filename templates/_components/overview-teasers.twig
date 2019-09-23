@@ -16,7 +16,7 @@
             {% set image = teaser.teaserImage.one() %}
             {% set cta = teaser.teaserCta.one() %}
 
-            <div class="{{ handle }}__teaser-cont {{ handle }}__teaser-cont--{{ teaser.type.handle|kebab }}">
+            <article class="{{ handle }}__teaser-cont {{ handle }}__teaser-cont--{{ teaser.type.handle|kebab }}">
                 {% if teaser.type.handle == 'statTeaser' %}
                     {% set stat = teaser.teaserStat.one() %}
 
@@ -42,7 +42,7 @@
                         </a>
                     {% endif %}
                 </div>
-            </div>
+            </article>
         {% endfor %}
     </div>
 {% endif %}
