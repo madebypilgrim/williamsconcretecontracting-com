@@ -40,6 +40,10 @@ $handle: "unordered-list";
             @include bold;
             @include fadeUp(150ms);
             margin-bottom: $spacing-xs / 2;
+
+            @media (min-width: $screen-md-min) {
+                padding-right: $spacing-sm;
+            }
         }
 
         & > h4 {
@@ -51,7 +55,7 @@ $handle: "unordered-list";
             @media (min-width: $screen-md-min) {
                 display: flex;
                 justify-content: space-between;
-                width: 100%;
+                width: 50%;
             }
 
             & > h4 {

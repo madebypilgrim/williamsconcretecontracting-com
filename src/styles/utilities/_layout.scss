@@ -44,7 +44,7 @@
     // For containers that have one wrapper gutter
     // Gutter fraction negated since each column has single corresponding gutter
     @else if ($cont-spread == "wide") {
-        $gutter-fr: 0; // stylelint-disable-line length-zero-no-unit
+        $gutter-fr: 0px; // stylelint-disable-line length-zero-no-unit
     }
     // For containers that have two wrapper gutters
     // Gutter fraction must be removed to allow for wrapper gutters
@@ -60,7 +60,7 @@
     // For spans that have wrap one gutter
     // Offset negated to since fraction includes 1:1 ratio of columns and gutters
     @else if ($spread == "wide") {
-        $offset: 0; // stylelint-disable-line length-zero-no-unit
+        $offset: 0px; // stylelint-disable-line length-zero-no-unit
     }
     // For spans that have wrap two gutters
     // Offset must be added to span both gutters

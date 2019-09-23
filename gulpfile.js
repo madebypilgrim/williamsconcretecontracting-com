@@ -291,7 +291,7 @@ gulp.task('styles:format', () => gulp
         config.styles.src,
     ])
     .pipe(stylelint({
-        fix: true,
+        fix: false,
         reporters: [
             { formatter: 'string', console: true },
         ],
