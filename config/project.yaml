@@ -10,7 +10,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1569354285
+dateModified: 1569354536
 email:
   fromEmail: trevor@madebypilgrim.com
   fromName: 'Williams Concrete Contracting'
@@ -60,8 +60,8 @@ fields:
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: text
   156be4b5-929c-4545-857f-4ba19c04842a:
-    name: 'Page State'
-    handle: pageState
+    name: 'Page Options'
+    handle: pageOptions
     instructions: ''
     searchable: true
     translationMethod: site
@@ -70,7 +70,7 @@ fields:
     settings:
       minRows: ''
       maxRows: ''
-      contentTable: '{{%stc_pagestate}}'
+      contentTable: '{{%stc_pageoptions}}'
       propagationMethod: all
       staticField: '1'
       columns:
@@ -78,7 +78,7 @@ fields:
           width: ''
         69:
           width: ''
-      fieldLayout: table
+      fieldLayout: row
       selectionLabel: ''
     contentColumnType: string
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34

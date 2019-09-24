@@ -8,8 +8,8 @@
 {% set links = header.headerLinks.all() %}
 {% set overview = header.headerOverview %}
 
-{% set invertLogo = entry and entry.pageState.invertLogo %}
-{% set hideMenuSummary = entry and entry.pageState.hideMenuSummary %}
+{% set invertLogo = entry and entry.pageOptions.invertLogo %}
+{% set hideMenuSummary = entry and entry.pageOptions.hideMenuSummary %}
 
 {# Variables #}
 {% set handle = 'header' %}
