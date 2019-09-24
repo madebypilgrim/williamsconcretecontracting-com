@@ -1,13 +1,15 @@
 {##
  # Header component
  # @global {GlobalSet} header
+ # @param {Entry} entry
  #}
 
 {# Params #}
 {% set links = header.headerLinks.all() %}
 {% set overview = header.headerOverview %}
 
-{% set invertLogo = entry and entry.invertLogo is defined and entry.invertLogo %}
+{% set invertLogo = entry and entry.pageState.invertLogo %}
+{% set hideMenuSummary = entry and entry.pageState.hideMenuSummary %}
 
 {# Variables #}
 {% set handle = 'header' %}
@@ -38,5 +40,7 @@
             </a>
         {% endfor %}
     </nav>
-    <footer>{{ overview }}</footer>
+    {% if not hideMenuSummary %}
+        <footer>{{ overview }}</footer>
+    {% endif %}
 </div>

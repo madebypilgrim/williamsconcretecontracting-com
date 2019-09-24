@@ -8,6 +8,7 @@ $handle: "contact-details";
 
     @media (min-width: $screen-sm-min) {
         @include space($spacing-xl, $spacing-lg);
+        @include pad(32px);
         min-height: 100vh;
     }
 

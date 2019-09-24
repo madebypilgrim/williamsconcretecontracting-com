@@ -4,6 +4,10 @@ $handle: "overview-teasers";
     @include pad($spacing-sm);
     padding-bottom: $spacing-xl;
 
+    @media (min-width: $screen-sm-min) {
+        @include pad(32px);
+    }
+
     &__teaser-cont {
         @include listMargin($spacing-lg);
 

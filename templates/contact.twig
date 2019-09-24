@@ -6,8 +6,10 @@
  # @param {Entry} entry
  #}
 
+{# Query #}
+{% set success = craft.app.request.getQueryParam('success') %}
+
 {# Controller #}
-{% set success = success is defined and success %}
 {% set message = message|default('') %}
 {% set model = model|default(null) %}
 

@@ -4,6 +4,10 @@ $handle: "contact-form";
     @include pad($spacing-sm);
     padding-bottom: $spacing-lg;
 
+    @media (min-width: $screen-sm-min) {
+        @include pad(32px);
+    }
+
     & > form {
         @include fadeUp;
         display: flex;

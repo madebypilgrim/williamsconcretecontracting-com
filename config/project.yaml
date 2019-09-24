@@ -10,7 +10,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1569285894
+dateModified: 1569354285
 email:
   fromEmail: trevor@madebypilgrim.com
   fromName: 'Williams Concrete Contracting'
@@ -59,6 +59,29 @@ fields:
       columnType: text
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: text
+  156be4b5-929c-4545-857f-4ba19c04842a:
+    name: 'Page State'
+    handle: pageState
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: verbb\supertable\fields\SuperTableField
+    settings:
+      minRows: ''
+      maxRows: ''
+      contentTable: '{{%stc_pagestate}}'
+      propagationMethod: all
+      staticField: '1'
+      columns:
+        70:
+          width: ''
+        69:
+          width: ''
+      fieldLayout: table
+      selectionLabel: ''
+    contentColumnType: string
+    fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
   1fb5c33f-1c1a-48bc-9a81-decd7c3a3675:
     name: 'Header Links'
     handle: headerLinks
@@ -399,18 +422,6 @@ fields:
       removeNbsp: '1'
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: text
-  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
-    name: 'Invert Logo'
-    handle: invertLogo
-    instructions: ''
-    searchable: true
-    translationMethod: none
-    translationKeyFormat: null
-    type: craft\fields\Lightswitch
-    settings:
-      default: ''
-    contentColumnType: boolean
-    fieldGroup: 346fc0b0-151f-4683-b042-f1d91d0c796a
   7dd401a9-2f8c-4276-8ce6-c3baa5acea61:
     name: 'Next CTAs'
     handle: nextCtas
@@ -1197,10 +1208,10 @@ sections:
                     required: false
                     sortOrder: 4
               -
-                name: SEO
+                name: Meta
                 sortOrder: 2
                 fields:
-                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                  156be4b5-929c-4545-857f-4ba19c04842a:
                     required: false
                     sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
@@ -1323,10 +1334,10 @@ sections:
                     required: false
                     sortOrder: 3
               -
-                name: SEO
+                name: Meta
                 sortOrder: 4
                 fields:
-                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                  156be4b5-929c-4545-857f-4ba19c04842a:
                     required: false
                     sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
@@ -1396,10 +1407,10 @@ sections:
                     required: false
                     sortOrder: 1
               -
-                name: SEO
+                name: Meta
                 sortOrder: 5
                 fields:
-                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                  156be4b5-929c-4545-857f-4ba19c04842a:
                     required: false
                     sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
@@ -1452,10 +1463,10 @@ sections:
                     required: false
                     sortOrder: 1
               -
-                name: SEO
+                name: Meta
                 sortOrder: 3
                 fields:
-                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                  156be4b5-929c-4545-857f-4ba19c04842a:
                     required: false
                     sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
@@ -1580,10 +1591,10 @@ sections:
                     required: false
                     sortOrder: 1
               -
-                name: SEO
+                name: Meta
                 sortOrder: 4
                 fields:
-                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                  156be4b5-929c-4545-857f-4ba19c04842a:
                     required: false
                     sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
@@ -1816,6 +1827,46 @@ superTableBlockTypes:
               b6a49418-f2c9-4201-9f10-b42d69bd7b0d:
                 required: false
                 sortOrder: 2
+  8dd8a224-684b-4737-b9c1-710c6a47b868:
+    field: 156be4b5-929c-4545-857f-4ba19c04842a
+    fields:
+      e3bc902d-9b2c-40b6-b450-b3f1b5d7c3c3:
+        name: 'Hide Menu Summary'
+        handle: hideMenuSummary
+        instructions: ''
+        searchable: false
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\Lightswitch
+        settings:
+          default: ''
+        contentColumnType: boolean
+        fieldGroup: null
+      f7f03c1c-4d30-4201-9e8c-60eb9907a483:
+        name: 'Invert Logo'
+        handle: invertLogo
+        instructions: ''
+        searchable: false
+        translationMethod: none
+        translationKeyFormat: null
+        type: craft\fields\Lightswitch
+        settings:
+          default: ''
+        contentColumnType: boolean
+        fieldGroup: null
+    fieldLayouts:
+      ae4507b5-25ce-47d2-8766-9172e8b476e8:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              e3bc902d-9b2c-40b6-b450-b3f1b5d7c3c3:
+                required: false
+                sortOrder: 2
+              f7f03c1c-4d30-4201-9e8c-60eb9907a483:
+                required: false
+                sortOrder: 1
   c5e38bad-8c7a-4300-9196-6a6e1d292a49:
     field: 8c996a7f-4d87-4970-b5d5-d9fd6cfc44fc
     fieldLayouts:

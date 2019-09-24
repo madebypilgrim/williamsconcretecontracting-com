@@ -51,7 +51,7 @@ class FormsController extends Controller
         }
 
         // Validate
-        if(!$model->validate()) {
+        if (!$model->validate()) {
             $success = false;
             $message = 'Submission Error! Please see form errors below.';
 
@@ -75,17 +75,17 @@ class FormsController extends Controller
         }
 
         // Save entry
-        if(!$model->saveCraftEntry()) {
+        if (!$model->saveCraftEntry()) {
             error_log(sprintf('Failed to save craft entry for form: %s', $handle));
         }
 
         // Send notification
-        if(!$model->sendNotificationEmail()) {
+        if (!$model->sendNotificationEmail()) {
             error_log(sprintf('Failed to send notification email for form: %s', $handle));
         }
 
         // Send confirmation
-        if(!$model->sendConfirmationEmail()) {
+        if (!$model->sendConfirmationEmail()) {
             error_log(sprintf('Failed to send confirmation email for form: %s', $handle));
         }
 
@@ -99,9 +99,7 @@ class FormsController extends Controller
         }
 
         // Send the global set back to the template
-        Craft::$app->getUrlManager()->setRouteParams([
-            'success' => $success,
-        ]);
+        return $this->redirectToPostedUrl();
     }
 
     /**

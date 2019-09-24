@@ -3,6 +3,10 @@ $handle: "unordered-list";
 .#{$handle} {
     @include pad($spacing-sm);
 
+    @media (min-width: $screen-sm-min) {
+        @include pad(32px);
+    }
+
     & > h2 {
         @include font("heading-md");
         @include swipeIn;
