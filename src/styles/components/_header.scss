@@ -30,6 +30,10 @@ $handle: "header";
             height: $spacing-sm * 3;
             fill: $color-black;
         }
+
+        &.is-inverted > i {
+            fill: $color-white;
+        }
     }
 
     & > label {

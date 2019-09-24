@@ -7,13 +7,15 @@
 {% set links = header.headerLinks.all() %}
 {% set overview = header.headerOverview %}
 
+{% set invertLogo = entry and entry.invertLogo is defined and entry.invertLogo %}
+
 {# Variables #}
 {% set handle = 'header' %}
 {% set activeClass = 'is-active' %}
 
 {# Markup #}
 <div class="{{ handle }}">
-    <a href="/" title="Home">
+    <a href="/" title="Home" class="{{ invertLogo ? 'is-inverted' }}">
         {% include '_components/icon' with { icon: 'logo' } %}
     </a>
     <input type="checkbox" id="nav-toggle" style="display:none" />

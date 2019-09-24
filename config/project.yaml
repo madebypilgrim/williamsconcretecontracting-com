@@ -10,7 +10,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1569205436
+dateModified: 1569285894
 email:
   fromEmail: trevor@madebypilgrim.com
   fromName: 'Williams Concrete Contracting'
@@ -399,6 +399,18 @@ fields:
       removeNbsp: '1'
     fieldGroup: 348ab01c-5a4d-4b4f-bd52-ea3595be3f34
     contentColumnType: text
+  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+    name: 'Invert Logo'
+    handle: invertLogo
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Lightswitch
+    settings:
+      default: ''
+    contentColumnType: boolean
+    fieldGroup: 346fc0b0-151f-4683-b042-f1d91d0c796a
   7dd401a9-2f8c-4276-8ce6-c3baa5acea61:
     name: 'Next CTAs'
     handle: nextCtas
@@ -1188,6 +1200,9 @@ sections:
                 name: SEO
                 sortOrder: 2
                 fields:
+                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                    required: false
+                    sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
                     required: false
                     sortOrder: 1
@@ -1311,6 +1326,9 @@ sections:
                 name: SEO
                 sortOrder: 4
                 fields:
+                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                    required: false
+                    sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
                     required: false
                     sortOrder: 1
@@ -1381,6 +1399,9 @@ sections:
                 name: SEO
                 sortOrder: 5
                 fields:
+                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                    required: false
+                    sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
                     required: false
                     sortOrder: 1
@@ -1434,6 +1455,9 @@ sections:
                 name: SEO
                 sortOrder: 3
                 fields:
+                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                    required: false
+                    sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
                     required: false
                     sortOrder: 1
@@ -1559,6 +1583,9 @@ sections:
                 name: SEO
                 sortOrder: 4
                 fields:
+                  74fe4e76-a0d1-4ef3-bcd7-21467970b9fc:
+                    required: false
+                    sortOrder: 2
                   b024e315-d048-43a9-b63f-2915a181b8c9:
                     required: false
                     sortOrder: 1
