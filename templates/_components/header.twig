@@ -12,11 +12,14 @@
 {% set hideMenuSummary = entry and entry.pageOptions.hideMenuSummary %}
 
 {# Variables #}
+{% set id = craft.utilities.uniqueId() %}
 {% set handle = 'header' %}
 {% set activeClass = 'is-active' %}
 
 {# Markup #}
-<div class="{{ handle }}">
+{% import '_macros/components' as components %}
+
+<div id="{{ id }}" class="{{ handle }}">
     <a href="/" title="Home" class="{{ invertLogo ? 'is-inverted' }}">
         {% include '_components/icon' with { icon: 'logo' } %}
     </a>
@@ -43,4 +46,8 @@
     {% if not hideMenuSummary %}
         <footer>{{ overview }}</footer>
     {% endif %}
+
+    {{ components.new(handle, {
+        id: id,
+    }) }}
 </div>

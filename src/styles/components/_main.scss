@@ -64,6 +64,7 @@ $handle: "main";
 
             @media (min-width: $screen-sm-min) {
                 @include span(5.5, "wide");
+                padding-bottom: $spacing-sm * 3; // for absolute footer
             }
 
             @media (min-width: $screen-md-min) {

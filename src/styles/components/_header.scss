@@ -2,6 +2,7 @@ $handle: "header";
 
 .#{$handle} {
     @include absolute(0, 0, auto, 0);
+    position: fixed;
     z-index: 10;
 
     // Mobile background bar to ensure text contrast
@@ -73,8 +74,8 @@ $handle: "header";
 
         @media (max-width: $screen-sm-max) {
             @include span(5.5, "wide");
-            @include pad(32px);
             @include space($spacing-md, $spacing-lg);
+            @include pad(32px);
             flex-direction: column;
             align-items: flex-start;
             justify-content: center;

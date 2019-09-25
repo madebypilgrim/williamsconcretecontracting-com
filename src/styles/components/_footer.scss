@@ -1,0 +1,26 @@
+$handle: "footer";
+
+.#{$handle} {
+    @include full;
+    position: relative;
+
+    @media (min-width: $screen-sm-min) {
+        @include span(5.5, "wide");
+        @include push(6.5, "wider");
+        @include pad(32px);
+    }
+
+    @media (min-width: $screen-md-min) {
+        @include span(6, "wider");
+        @include push(6, "wide");
+    }
+
+    > p {
+        @include space($spacing-sm);
+        @include pad($gutter-sm);
+
+        @media (min-width: $screen-sm-min) {
+            @include absolute(auto, 0, 0, 0);
+        }
+    }
+}

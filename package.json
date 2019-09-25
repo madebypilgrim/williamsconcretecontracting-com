@@ -49,6 +49,7 @@
         "watchify": "^3.11.1"
     },
     "dependencies": {
+        "body-scroll-lock": "^2.6.4",
         "classlist-polyfill": "^1.2.0",
         "compop": "0.0.2",
         "google-maps": "^3.3.0",

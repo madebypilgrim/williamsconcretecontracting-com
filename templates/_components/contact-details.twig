@@ -24,7 +24,12 @@
     {% endif %}
     <div class="{{ handle }}__map-cont">
         {% if map %}
-            <img src="{{ map.url }}" alt="Arial map of Charlotte" />
+            <a
+                href="https://www.google.com/maps/search/?api=1&query={{ address|striptags|url_encode }}"
+                title="View Address"
+                target="_blank">
+                <img src="{{ map.url }}" alt="Arial map of Charlotte" />
+            </a>
         {% endif %}
     </div>
     <div class="{{ handle }}__details-cont">

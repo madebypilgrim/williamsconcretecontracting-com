@@ -37,10 +37,15 @@ $handle: "contact-details";
             display: none;
         }
 
-        & > img {
+        > a {
             @include scaleIn;
             display: block;
             width: 100%;
+
+            > img {
+                display: block;
+                width: 100%;
+            }
         }
     }
 
