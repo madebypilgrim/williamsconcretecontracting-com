@@ -19,12 +19,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
     <head>
         {% include '_meta/data' %}
-        {#
         {% include '_meta/favicons' %}
-        #}
 
         {# Main stylesheet #}
-        <link rel="stylesheet" type="text/css" href="/styles/index.css?build=1536262109825" />
+        <link rel="stylesheet" type="text/css" href="/styles/index.1569501239080.css" />
+
+        {% if constant('CRAFT_ENVIRONMENT') == 'production' %}
+            {% include '_meta/google-analytics' %}
+        {% endif %}
     </head>
 
     <body data-no-js="true">
@@ -50,7 +52,7 @@
         </footer>
 
         {# Main scripts #}
-        <script type="text/javascript" src="/scripts/index.js?build=1536262109825"></script>
+        <script type="text/javascript" src="/scripts/index.1569501239081.js"></script>
 
         {# LiveReload (development only) #}
         {% if constant('CRAFT_ENVIRONMENT') == 'development' %}
