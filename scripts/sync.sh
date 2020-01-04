@@ -13,23 +13,24 @@
 # This script requires a sibling file named ".env" that contains named
 # variabels as follows:
 #
-# |_ ASSETS_DIR (craft CMS variables)
-# |_ WEB_DIR
-# |_ DB_DATABASE (craft CMS variable)
-# |_ DB_USER (craft CMS variable)
-# |_ DB_PASSWORD (craft CMS variable)
-# |_ HOME_PATH
-# |_ SSH_HOST
-# |_ STAG_DB_DATABASE
-# |_ STAG_DB_USER
-# |_ STAG_DB_PASSWORD
-# |_ STAG_USER
-# |_ STAG_HOME_PATH
-# |_ PROD_DB_DATABASE
-# |_ PROD_DB_USER
-# |_ PROD_DB_PASSWORD
-# |_ PROD_USER
-# |_ PROD_HOME_PATH
+# |_ASSETS_DIR (craft CMS variables)
+# |_WEB_DIR
+# |_DB_DATABASE (craft CMS variable)
+# |_DB_USER (craft CMS variable)
+# |_DB_PASSWORD (craft CMS variable)
+# |_HOME_PATH
+# |_STAG_HOST
+# |_STAG_USER
+# |_STAG_HOME_PATH
+# |_STAG_DB_DATABASE
+# |_STAG_DB_USER
+# |_STAG_DB_PASSWORD
+# |_PROD_HOST
+# |_PROD_USER
+# |_PROD_HOME_PATH
+# |_PROD_DB_DATABASE
+# |_PROD_DB_USER
+# |_PROD_DB_PASSWORD
 
 # Import env variables
 source .env
@@ -38,11 +39,12 @@ source .env
 BACKUP_TMP="db.sql"
 
 # Initialize variables
+REMOTE_HOST=""
+REMOTE_USER=""
+REMOTE_HOME_PATH=""
 REMOTE_DB_DATABASE=""
 REMOTE_DB_USER=""
 REMOTE_DB_PASSWORD=""
-REMOTE_USER=""
-REMOTE_HOME_PATH=""
 
 ################################################################################
 # Error checks
@@ -69,17 +71,19 @@ fi
 
 # Set remote environment
 if [ "$2" = "staging" ]; then
+    REMOTE_HOST="$STAG_HOST"
+    REMOTE_USER="$STAG_USER"
+    REMOTE_HOME_PATH="$STAG_HOME_PATH"
     REMOTE_DB_DATABASE="$STAG_DB_DATABASE"
     REMOTE_DB_USER="$STAG_DB_USER"
     REMOTE_DB_PASSWORD="$STAG_DB_PASSWORD"
-    REMOTE_USER="$STAG_USER"
-    REMOTE_HOME_PATH="$STAG_HOME_PATH"
 elif [ "$2" = "production" ]; then
+    REMOTE_HOST="$PROD_HOST"
+    REMOTE_USER="$PROD_USER"
+    REMOTE_HOME_PATH="$PROD_HOME_PATH"
     REMOTE_DB_DATABASE="$PROD_DB_DATABASE"
     REMOTE_DB_USER="$PROD_DB_USER"
     REMOTE_DB_PASSWORD="$PROD_DB_PASSWORD"
-    REMOTE_USER="$PROD_USER"
-    REMOTE_HOME_PATH="$PROD_HOME_PATH"
 fi
 
 ################################################################################
@@ -95,15 +99,15 @@ fi
 
 if [ "$1" = "push" ]; then
     mysqldump --no-defaults -u"$DB_USER" -p"$DB_PASSWORD" "$DB_DATABASE" > "$HOME_PATH/$BACKUP_TMP"
-    rsync -azP --no-o --no-g --no-p "$HOME_PATH/$BACKUP_TMP" "$SSH_HOST:$REMOTE_HOME_PATH"
-    ssh "$SSH_HOST" "mysql -u$REMOTE_DB_USER -p'$REMOTE_DB_PASSWORD' $REMOTE_DB_DATABASE < $REMOTE_HOME_PATH/$BACKUP_TMP"
-    rsync -azh --no-o --no-g --no-p "$HOME_PATH/$WEB_DIR/$ASSETS_DIR/" "$SSH_HOST:$REMOTE_HOME_PATH/$WEB_DIR/$ASSETS_DIR"
+    rsync -azP --no-o --no-g --no-p "$HOME_PATH/$BACKUP_TMP" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_HOME_PATH"
+    ssh "$REMOTE_USER@$REMOTE_HOST" "mysql -u$REMOTE_DB_USER -p'$REMOTE_DB_PASSWORD' $REMOTE_DB_DATABASE < $REMOTE_HOME_PATH/$BACKUP_TMP"
+    rsync -azh --no-o --no-g --no-p "$HOME_PATH/$WEB_DIR/$ASSETS_DIR/" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_HOME_PATH/$WEB_DIR/$ASSETS_DIR"
 elif [ "$1" = "pull" ]; then
-    ssh "$SSH_HOST" "mysqldump --no-defaults -u$REMOTE_DB_USER -p'$REMOTE_DB_PASSWORD' $REMOTE_DB_DATABASE > $REMOTE_HOME_PATH/$BACKUP_TMP"
-    rsync -azP "$SSH_HOST":"$REMOTE_HOME_PATH/$BACKUP_TMP" "$HOME_PATH/"
+    ssh "$REMOTE_USER@$REMOTE_HOST" "mysqldump --no-defaults -u$REMOTE_DB_USER -p'$REMOTE_DB_PASSWORD' $REMOTE_DB_DATABASE > $REMOTE_HOME_PATH/$BACKUP_TMP"
+    rsync -azP "$REMOTE_USER@$REMOTE_HOST":"$REMOTE_HOME_PATH/$BACKUP_TMP" "$HOME_PATH/"
     mysql -u"$DB_USER" -p"$DB_PASSWORD" "$DB_DATABASE" < "$BACKUP_TMP"
-    rsync -azh "$SSH_HOST:$REMOTE_HOME_PATH/$WEB_DIR/$ASSETS_DIR/" "$HOME_PATH/$WEB_DIR/$ASSETS_DIR"
+    rsync -azh "$REMOTE_USER@$REMOTE_HOST:$REMOTE_HOME_PATH/$WEB_DIR/$ASSETS_DIR/" "$HOME_PATH/$WEB_DIR/$ASSETS_DIR"
 fi
 
 rm "$HOME_PATH/$BACKUP_TMP"
-ssh "$SSH_HOST" "rm $REMOTE_HOME_PATH/$BACKUP_TMP"
+ssh "$REMOTE_USER@$REMOTE_HOST" "rm $REMOTE_HOME_PATH/$BACKUP_TMP"
