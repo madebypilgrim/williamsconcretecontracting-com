@@ -2,11 +2,13 @@ import './polyfills';
 import pop from 'compop';
 
 // Components
+import Form from './components/form';
 import Header from './components/header';
 import Main from './components/main';
 
 /* eslint-disable quote-props */
 const classMap = {
+    'form': Form,
     'header': Header,
     'main': Main,
 };

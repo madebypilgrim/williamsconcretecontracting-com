@@ -7,10 +7,13 @@
 {% set model = model|default(craft.forms.getForm('contact')) %}
 
 {# Variables #}
+{% set id = craft.utilities.uniqueId() %}
 {% set handle = 'contact-form' %}
 
 {# Markup #}
-<div class="{{ handle }}">
+{% import '_macros/components' as components %}
+
+<div id="{{ id }}" class="{{ handle }}">
     <form method="post">
         <input type="hidden" name="action" value="forms-module/forms/submit" />
         <input type="hidden" name="handle" value="{{ 'contact'|hash }}" />
@@ -82,4 +85,8 @@
             {% include '_components/icon' with { icon: 'arrow-right' } %}
         </button>
     </form>
+
+    {{ components.new('form', {
+        id: id,
+    }) }}
 </div>
