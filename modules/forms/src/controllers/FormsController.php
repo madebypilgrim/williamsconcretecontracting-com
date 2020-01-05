@@ -50,6 +50,9 @@ class FormsController extends Controller
             exit('Nice try robots');
         }
 
+        // Check reCAPTCHA score via token
+        $validRecaptcha = $this->validRecaptcha($params['token']);
+
         // Validate
         if (!$model->validate()) {
             $success = false;
@@ -72,6 +75,10 @@ class FormsController extends Controller
             ]);
 
             return;
+        }
+
+        if (!$validRecaptcha) {
+            return $this->redirectToPostedUrl();
         }
 
         // Save entry
@@ -100,6 +107,21 @@ class FormsController extends Controller
 
         // Send the global set back to the template
         return $this->redirectToPostedUrl();
+    }
+
+    private function validRecaptcha(string $token): bool
+    {
+        $endpoint = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = [
+            'secret' => getenv('RECAPTCHA_SECRET_KEY'),
+            'response' => $token,
+        ];
+
+        $res = Craft::createGuzzleClient()->request('POST', $endpoint, [
+            'query' => $data,
+        ]);
+
+        return json_decode($res->getBody(), true)['success'];
     }
 
     /**
