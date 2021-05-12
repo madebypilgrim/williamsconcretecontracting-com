@@ -56,7 +56,7 @@
         "intersection-observer": "^0.5.0",
         "recaptcha-v3": "^1.7.2",
         "svgxuse": "^1.2.4",
-        "swiper": "^4.4.6",
+        "swiper": "^6.5.1",
         "ui-utilities": "^0.1.0"
     }
 }
